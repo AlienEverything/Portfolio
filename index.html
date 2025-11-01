@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف الإنجاز - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lang-btn {
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 2rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+
+        .hero-info {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #d0d0d0;
+            font-weight: 600;
+        }
+
+        .hero-school {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .subject-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+        }
+
+        .subject-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .subject-description {
+            color: #d0d0d0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 4rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logoText">ملف الإنجاز</div>
+            <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">English</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="floating-element">📚</div>
+        <div class="floating-element">✏️</div>
+        <div class="floating-element">🎓</div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title" id="mainTitle">ملف الإنجاز الشامل</h1>
+            <h2 class="hero-subtitle" id="subtitle">رحلة تعليمية متميزة</h2>
+            <p class="hero-info" id="studentName">الطالب: حسن حمزة الشخص</p>
+            <p class="hero-school" id="schoolName">ثانوية الأمير عبد المحسن</p>
+            <p class="hero-school" id="gradeLevel">الصف الأول الثانوي</p>
+            <p class="hero-description" id="introText">
+                مرحباً بكم في ملف إنجازي الشخصي، حيث أعرض رحلتي التعليمية في مختلف المواد الدراسية وإنجازاتي الشخصية. 
+                يحتوي هذا الملف على نظرة شاملة لما تعلمته وأنجزته خلال مسيرتي الأكاديمية، من المواد الأساسية إلى المهارات التقنية التي اكتسبتها.
+                استكشف الأقسام المختلفة للتعرف على اهتماماتي ومشاريعي وشغفي بالتعلم المستمر.
+            </p>
+        </div>
+    </section>
+
+    <div class="subjects-grid">
+        <a href="personal.html" class="subject-card">
+            <div class="subject-icon">🏆</div>
+            <div class="subject-title" id="personalTitle">الإنجازات الشخصية</div>
+            <div class="subject-description" id="personalDesc">شهادات ومشاركات وإنجازات متنوعة</div>
+        </a>
+
+        <a href="arabic.html" class="subject-card">
+            <div class="subject-icon">📖</div>
+            <div class="subject-title" id="arabicTitle">اللغة العربية</div>
+            <div class="subject-description" id="arabicDesc">لغة الضاد والبيان، تاريخها وقواعدها وأدبها</div>
+        </a>
+
+        <a href="english.html" class="subject-card">
+            <div class="subject-icon">🌍</div>
+            <div class="subject-title" id="englishTitle">اللغة الإنجليزية</div>
+            <div class="subject-description" id="englishDesc">اللغة العالمية ومهارات التواصل</div>
+        </a>
+
+        <a href="math.html" class="subject-card">
+            <div class="subject-icon">🔢</div>
+            <div class="subject-title" id="mathTitle">الرياضيات</div>
+            <div class="subject-description" id="mathDesc">علم الأرقام والمعادلات والتفكير المنطقي</div>
+        </a>
+
+        <a href="chemistry.html" class="subject-card">
+            <div class="subject-icon">🧪</div>
+            <div class="subject-title" id="chemTitle">الكيمياء</div>
+            <div class="subject-description" id="chemDesc">عالم المواد والتفاعلات الكيميائية</div>
+        </a>
+
+        <a href="biology.html" class="subject-card">
+            <div class="subject-icon">🧬</div>
+            <div class="subject-title" id="bioTitle">الأحياء</div>
+            <div class="subject-description" id="bioDesc">علم الحياة والكائنات الحية</div>
+        </a>
+
+        <a href="physics.html" class="subject-card">
+            <div class="subject-icon">⚡</div>
+            <div class="subject-title" id="physTitle">الفيزياء</div>
+            <div class="subject-description" id="physDesc">قوانين الطبيعة والكون</div>
+        </a>
+
+        <a href="critical.html" class="subject-card">
+            <div class="subject-icon">🧠</div>
+            <div class="subject-title" id="critTitle">التفكير الناقد</div>
+            <div class="subject-description" id="critDesc">مهارات التحليل والتفكير المنطقي</div>
+        </a>
+
+        <a href="tafseer.html" class="subject-card">
+            <div class="subject-icon">📗</div>
+            <div class="subject-title" id="tafseerTitle">التفسير</div>
+            <div class="subject-description" id="tafseerDesc">فهم معاني القرآن الكريم</div>
+        </a>
+    </div>
+
+    <script>
+        let isArabic = true;
+
+        const translations = {
+            ar: {
+                logoText: 'ملف الإنجاز',
+                langBtn: 'English',
+                mainTitle: 'ملف الإنجاز الشامل',
+                subtitle: 'رحلة تعليمية متميزة',
+                studentName: 'الطالب: حسن حمزة الشخص',
+                schoolName: 'ثانوية الأمير عبد المحسن',
+                gradeLevel: 'الصف الأول الثانوي',
+                introText: 'مرحباً بكم في ملف إنجازي الشخصي، حيث أعرض رحلتي التعليمية في مختلف المواد الدراسية وإنجازاتي الشخصية. يحتوي هذا الملف على نظرة شاملة لما تعلمته وأنجزته خلال مسيرتي الأكاديمية، من المواد الأساسية إلى المهارات التقنية التي اكتسبتها. استكشف الأقسام المختلفة للتعرف على اهتماماتي ومشاريعي وشغفي بالتعلم المستمر.',
+                personalTitle: 'الإنجازات الشخصية',
+                personalDesc: 'شهادات ومشاركات وإنجازات متنوعة',
+                arabicTitle: 'اللغة العربية',
+                arabicDesc: 'لغة الضاد والبيان، تاريخها وقواعدها وأدبها',
+                englishTitle: 'اللغة الإنجليزية',
+                englishDesc: 'اللغة العالمية ومهارات التواصل',
+                mathTitle: 'الرياضيات',
+                mathDesc: 'علم الأرقام والمعادلات والتفكير المنطقي',
+                chemTitle: 'الكيمياء',
+                chemDesc: 'عالم المواد والتفاعلات الكيميائية',
+                bioTitle: 'الأحياء',
+                bioDesc: 'علم الحياة والكائنات الحية',
+                physTitle: 'الفيزياء',
+                physDesc: 'قوانين الطبيعة والكون',
+                critTitle: 'التفكير الناقد',
+                critDesc: 'مهارات التحليل والتفكير المنطقي',
+                tafseerTitle: 'التفسير',
+                tafseerDesc: 'فهم معاني القرآن الكريم'
+            },
+            en: {
+                logoText: 'Achievement Portfolio',
+                langBtn: 'العربية',
+                mainTitle: 'Comprehensive Achievement Portfolio',
+                subtitle: 'An Outstanding Educational Journey',
+                studentName: 'Student: Hassan Hamzah Alshakhs',
+                schoolName: 'Prince Abdulmohsen Secondary School',
+                gradeLevel: 'First Year Secondary',
+                introText: 'Welcome to my personal achievement portfolio, where I showcase my educational journey across various subjects and personal accomplishments. This portfolio contains a comprehensive view of what I have learned and achieved during my academic career, from core subjects to the technical skills I have acquired. Explore the different sections to learn about my interests, projects, and passion for continuous learning.',
+                personalTitle: 'Personal Achievements',
+                personalDesc: 'Certificates, participations, and various accomplishments',
+                arabicTitle: 'Arabic Language',
+                arabicDesc: 'The language of eloquence, its history, grammar, and literature',
+                englishTitle: 'English Language',
+                englishDesc: 'The global language and communication skills',
+                mathTitle: 'Mathematics',
+                mathDesc: 'The science of numbers, equations, and logical thinking',
+                chemTitle: 'Chemistry',
+                chemDesc: 'The world of matter and chemical reactions',
+                bioTitle: 'Biology',
+                bioDesc: 'The science of life and living organisms',
+                physTitle: 'Physics',
+                physDesc: 'The laws of nature and the universe',
+                critTitle: 'Critical Thinking',
+                critDesc: 'Analytical and logical thinking skills',
+                tafseerTitle: 'Tafseer',
+                tafseerDesc: 'Understanding the meanings of the Holy Quran'
+            }
+        };
+
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const lang = isArabic ? 'ar' : 'en';
+            const html = document.documentElement;
+            
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+            
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.03)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '3px';
+            particle.style.height = '3px';
+            particle.style.background = '#00d4ff';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.8';
+            particle.style.boxShadow = '0 0 10px #00d4ff';
+            
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            document.querySelector('.hero').appendChild(particle);
+            
+            let opacity = 0.8;
+            let size = 3;
+            const animate = () => {
+                opacity -= 0.004;
+                size += 0.1;
+                particle.style.opacity = opacity;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                if (opacity <= 0) {
+                    particle.remove();
+                } else {
+                    requestAnimationFrame(animate);
+                }
+            };
+            
+            requestAnimationFrame(animate);
+        }
+
+        setInterval(createParticle, 200);
+    </script>
+</body>
+</html>

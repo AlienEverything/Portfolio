@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Language - Hassan Hamzah Alshakhs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a512e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #10d400, #2cbf7b);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #10d400, #2cbf7b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #10d400, #2cbf7b);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(16, 212, 0, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #10d400, #2cbf7b, #00ff6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #10d400, #2cbf7b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(16, 212, 0, 0.3);
+            border-color: #10d400;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10d400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content ul {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(16, 212, 0, 0.3);
+            border-color: #10d400;
+        }
+
+        .grid-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10d400;
+            margin-bottom: 1rem;
+        }
+
+        .grid-text {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .concept-map {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .map-center {
+            background: linear-gradient(45deg, #10d400, #2cbf7b);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .map-branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-branch {
+            background: rgba(16, 212, 0, 0.1);
+            border: 2px solid #10d400;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .map-branch:hover {
+            transform: scale(1.05);
+            background: rgba(16, 212, 0, 0.2);
+        }
+
+        .branch-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #10d400;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch-items {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">English Language</div>
+            <a href="index.html" class="nav-btn">Back to Home</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">English Language</h1>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">About the English Language</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">What is English?</h3>
+            <div class="card-content">
+                <p>English is a global language spoken by over 1.5 billion people worldwide. It serves as the primary means of international communication in business, science, technology, and diplomacy. As the most widely learned second language, English opens doors to countless opportunities for personal and professional growth.</p>
+                
+                <p><strong>Importance of English:</strong></p>
+                <ul>
+                    <li>The dominant language in global business and international trade</li>
+                    <li>Primary language for scientific research and academic publications</li>
+                    <li>Essential for accessing vast resources of knowledge on the internet</li>
+                    <li>Key to understanding different cultures and connecting with people worldwide</li>
+                    <li>Required for many higher education programs and career opportunities</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">The Four Essential Skills</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">👂</div>
+                        <div class="grid-title">Listening</div>
+                        <div class="grid-text">Understanding spoken English in various accents and contexts, from casual conversations to formal presentations and lectures</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">💬</div>
+                        <div class="grid-title">Speaking</div>
+                        <div class="grid-text">Expressing ideas clearly and fluently, using proper pronunciation, intonation, and appropriate vocabulary for different situations</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📖</div>
+                        <div class="grid-title">Reading</div>
+                        <div class="grid-text">Comprehending written texts ranging from simple paragraphs to complex academic articles and literature</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">✍️</div>
+                        <div class="grid-title">Writing</div>
+                        <div class="grid-text">Composing clear, well-structured texts including essays, reports, emails, and creative pieces with proper grammar and style</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Grammar Fundamentals</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">Parts of Speech</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">Parts of Speech</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">Nouns</div>
+                            <div class="branch-items">
+                                Name people, places, things<br>
+                                Common & Proper<br>
+                                Concrete & Abstract
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Pronouns</div>
+                            <div class="branch-items">
+                                Replace nouns<br>
+                                Personal, Possessive<br>
+                                Demonstrative, Relative
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Verbs</div>
+                            <div class="branch-items">
+                                Express actions or states<br>
+                                Action & Linking<br>
+                                Auxiliary & Modal
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Adjectives</div>
+                            <div class="branch-items">
+                                Describe nouns<br>
+                                Comparative & Superlative<br>
+                                Descriptive & Limiting
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Adverbs</div>
+                            <div class="branch-items">
+                                Modify verbs, adjectives<br>
+                                Manner, Place, Time<br>
+                                Frequency, Degree
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Prepositions</div>
+                            <div class="branch-items">
+                                Show relationships<br>
+                                Time, Place, Direction<br>
+                                in, on, at, with, by
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">Verb Tenses Overview</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">12 Verb Tenses</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">Simple Present</div>
+                            <div class="branch-items">
+                                Habits & Facts<br>
+                                I study every day<br>
+                                She works hard
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Present Continuous</div>
+                            <div class="branch-items">
+                                Happening now<br>
+                                I am studying<br>
+                                They are playing
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Present Perfect</div>
+                            <div class="branch-items">
+                                Past with present result<br>
+                                I have finished<br>
+                                She has lived here
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Simple Past</div>
+                            <div class="branch-items">
+                                Completed actions<br>
+                                I studied yesterday<br>
+                                He went home
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Past Continuous</div>
+                            <div class="branch-items">
+                                Action in progress<br>
+                                I was studying<br>
+                                They were playing
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Simple Future</div>
+                            <div class="branch-items">
+                                Future actions<br>
+                                I will study<br>
+                                She will come
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>Understanding Tenses:</strong></p>
+                <ul>
+                    <li><strong>Simple tenses:</strong> Express basic time - past, present, or future</li>
+                    <li><strong>Continuous tenses:</strong> Show ongoing actions at specific times</li>
+                    <li><strong>Perfect tenses:</strong> Connect two time periods or show completed actions</li>
+                    <li><strong>Perfect continuous tenses:</strong> Combine duration with completion</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">Sentence Structure</h3>
+            <div class="card-content">
+                <p><strong>Basic Sentence Patterns:</strong></p>
+                <ul>
+                    <li><strong>Subject + Verb:</strong> Birds fly.</li>
+                    <li><strong>Subject + Verb + Object:</strong> I study English.</li>
+                    <li><strong>Subject + Verb + Complement:</strong> She is a teacher.</li>
+                    <li><strong>Subject + Verb + Indirect Object + Direct Object:</strong> He gave me a book.</li>
+                    <li><strong>Subject + Verb + Object + Complement:</strong> They elected him president.</li>
+                </ul>
+
+                <p><strong>Types of Sentences:</strong></p>
+                <ul>
+                    <li><strong>Simple:</strong> Contains one independent clause (I love reading.)</li>
+                    <li><strong>Compound:</strong> Two independent clauses joined (I love reading, and she loves writing.)</li>
+                    <li><strong>Complex:</strong> Independent + dependent clause (I study because I want to succeed.)</li>
+                    <li><strong>Compound-Complex:</strong> Multiple independent and dependent clauses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">First Year Secondary Curriculum</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">Mega Goal 3 Units</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🔄</div>
+                        <div class="grid-title">Big Changes</div>
+                        <div class="grid-text">Discussing life transitions, personal growth, and major life events using past and present perfect tenses</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">💼</div>
+                        <div class="grid-title">Careers</div>
+                        <div class="grid-text">Exploring different professions, job interviews, and career planning vocabulary</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🔮</div>
+                        <div class="grid-title">What Will Be, Will Be</div>
+                        <div class="grid-text">Making predictions, discussing future plans using future tenses and modals</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📢</div>
+                        <div class="grid-title">The Art of Advertising</div>
+                        <div class="grid-text">Understanding persuasive language, marketing techniques, and media literacy</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🏥</div>
+                        <div class="grid-title">Did You Hurt Yourself?</div>
+                        <div class="grid-text">Health vocabulary, describing injuries, medical situations, and reflexive pronouns</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">💡</div>
+                        <div class="grid-title">Take My Advice</div>
+                        <div class="grid-text">Giving and receiving advice using modal verbs: should, ought to, had better</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">Key Grammar Points</h3>
+            <div class="card-content">
+                <p><strong>Modal Verbs:</strong></p>
+                <ul>
+                    <li><strong>Can/Could:</strong> Ability and possibility (I can swim, Could you help me?)</li>
+                    <li><strong>May/Might:</strong> Permission and possibility (May I leave? It might rain.)</li>
+                    <li><strong>Must/Have to:</strong> Necessity and obligation (You must study, I have to go.)</li>
+                    <li><strong>Should/Ought to:</strong> Advice and recommendation (You should rest, You ought to be careful.)</li>
+                    <li><strong>Will/Would:</strong> Future and conditional (I will help, I would if I could.)</li>
+                </ul>
+
+                <p><strong>Conditional Sentences:</strong></p>
+                <ul>
+                    <li><strong>Zero Conditional:</strong> If you heat water, it boils. (General truths)</li>
+                    <li><strong>First Conditional:</strong> If it rains, I will stay home. (Real possibility)</li>
+                    <li><strong>Second Conditional:</strong> If I won the lottery, I would travel. (Unreal present)</li>
+                    <li><strong>Third Conditional:</strong> If I had studied, I would have passed. (Unreal past)</li>
+                </ul>
+
+                <p><strong>Passive Voice:</strong></p>
+                <ul>
+                    <li>Formation: Object + be + past participle (+ by agent)</li>
+                    <li>Active: The teacher teaches the students.</li>
+                    <li>Passive: The students are taught by the teacher.</li>
+                    <li>Used when action is more important than doer</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Writing Skills</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">Types of Writing</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🖼️</div>
+                        <div class="grid-title">Descriptive</div>
+                        <div class="grid-text">Creating vivid images through detailed descriptions using sensory language and figurative expressions</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📚</div>
+                        <div class="grid-title">Narrative</div>
+                        <div class="grid-text">Telling stories with clear beginning, middle, and end, including characters, setting, and plot</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📋</div>
+                        <div class="grid-title">Expository</div>
+                        <div class="grid-text">Explaining concepts, providing information, and analyzing topics objectively</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🎯</div>
+                        <div class="grid-title">Persuasive</div>
+                        <div class="grid-text">Convincing readers through logical arguments, evidence, and rhetorical techniques</div>
+                    </div>
+                </div>
+
+                <p><strong>Essay Structure:</strong></p>
+                <ul>
+                    <li><strong>Introduction:</strong> Hook (attention grabber), background information, and clear thesis statement</li>
+                    <li><strong>Body Paragraphs:</strong> Topic sentence, supporting details, examples, explanations, and transitions</li>
+                    <li><strong>Conclusion:</strong> Restate thesis, summarize main points, provide final thoughts or call to action</li>
+                </ul>
+
+                <p><strong>Email Writing:</strong></p>
+                <ul>
+                    <li><strong>Formal:</strong> Professional tone, proper greetings (Dear Mr./Ms.), clear subject line, structured content</li>
+                    <li><strong>Informal:</strong> Casual tone, friendly greetings (Hi/Hello), relaxed language but still clear</li>
+                    <li>Both types require: Clear purpose, organized information, appropriate closing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Vocabulary Building</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">Strategies for Learning Vocabulary</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">Vocabulary Strategies</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">Context Clues</div>
+                            <div class="branch-items">
+                                Learn from surrounding text<br>
+                                Definition, Example<br>
+                                Synonym, Antonym clues
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Word Families</div>
+                            <div class="branch-items">
+                                Related word forms<br>
+                                create, creation, creative<br>
+                                Different parts of speech
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Affixes</div>
+                            <div class="branch-items">
+                                Prefixes & Suffixes<br>
+                                un-, re-, -tion, -ly<br>
+                                Change meaning or function
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Collocations</div>
+                            <div class="branch-items">
+                                Common word combinations<br>
+                                make a decision<br>
+                                take a break
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Idioms</div>
+                            <div class="branch-items">
+                                Fixed expressions<br>
+                                piece of cake<br>
+                                break the ice
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">Practice</div>
+                            <div class="branch-items">
+                                Use in context<br>
+                                Speaking & Writing<br>
+                                Regular review
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>Common Prefixes:</strong></p>
+                <ul>
+                    <li><strong>un-, in-, dis-:</strong> Opposite or negative (unhappy, incomplete, disagree)</li>
+                    <li><strong>re-:</strong> Again (rewrite, return, review)</li>
+                    <li><strong>pre-:</strong> Before (preview, prehistoric, predict)</li>
+                    <li><strong>mis-:</strong> Wrong or badly (mistake, misunderstand, misbehave)</li>
+                </ul>
+
+                <p><strong>Common Suffixes:</strong></p>
+                <ul>
+                    <li><strong>-tion, -sion:</strong> Noun form (education, discussion)</li>
+                    <li><strong>-ly:</strong> Adverb form (quickly, happily, carefully)</li>
+                    <li><strong>-ful, -less:</strong> Full of/without (helpful, careless)</li>
+                    <li><strong>-able, -ible:</strong> Capable of (readable, possible)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Reading Comprehension</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">Reading Strategies</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">👀</div>
+                        <div class="grid-title">Skimming</div>
+                        <div class="grid-text">Quickly reading to get the main idea, looking at titles, headings, and first sentences</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🔍</div>
+                        <div class="grid-title">Scanning</div>
+                        <div class="grid-text">Searching for specific information like names, dates, or keywords without reading everything</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🤔</div>
+                        <div class="grid-title">Predicting</div>
+                        <div class="grid-text">Anticipating content based on titles, images, and prior knowledge before reading</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">💭</div>
+                        <div class="grid-title">Inferring</div>
+                        <div class="grid-text">Reading between the lines to understand implied meanings and author's purpose</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📝</div>
+                        <div class="grid-title">Summarizing</div>
+                        <div class="grid-text">Identifying and restating main points in your own words briefly</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">❓</div>
+                        <div class="grid-title">Questioning</div>
+                        <div class="grid-text">Asking questions while reading to ensure understanding and engage with text</div>
+                    </div>
+                </div>
+
+                <p><strong>Question Types:</strong></p>
+                <ul>
+                    <li><strong>Literal:</strong> Information directly stated in text (Who? What? When? Where?)</li>
+                    <li><strong>Inferential:</strong> Requires reading between lines (Why? How? What if?)</li>
+                    <li><strong>Evaluative:</strong> Requires judgment and opinion (Do you agree? Is it effective?)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('grid-card')) {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                } else if (card.classList.contains('map-branch')) {
+                    card.style.transform = 'scale(1.05)';
+                } else {
+                    card.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+===== COPY THE ABOVE AND SAVE AS: english.html =====
+                

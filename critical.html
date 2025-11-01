@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التفكير الناقد - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #2e1a1a 50%, #4a1a2e 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f, #ff9999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3);
+            border-color: #ff6b6b;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content ul {
+            padding-right: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 1rem;
+        }
+
+        .concept-map {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .map-center {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .map-branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-branch {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid #ff6b6b;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .map-branch:hover {
+            transform: scale(1.05);
+            background: rgba(255, 107, 107, 0.2);
+        }
+
+        .branch-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ee5a6f;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch-items {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+            border-color: #ff6b6b;
+        }
+
+        .grid-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ee5a6f;
+            margin-bottom: 1rem;
+        }
+
+        .grid-text {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">التفكير الناقد</div>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">مادة التفكير الناقد</h1>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التعريف بالتفكير الناقد</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">ما هو التفكير الناقد؟</h3>
+            <div class="card-content">
+                <p>التفكير الناقد هو عملية عقلية منضبطة تتضمن تحليل وتقييم المعلومات والحجج بطريقة موضوعية ومنطقية. إنه القدرة على التفكير بوضوح وعقلانية، وفهم الروابط المنطقية بين الأفكار، والتمييز بين الحقائق والآراء.</p>
+                
+                <p><strong>أهمية التفكير الناقد:</strong></p>
+                <ul>
+                    <li>اتخاذ قرارات مدروسة ومبنية على أسس منطقية</li>
+                    <li>حل المشكلات بطرق إبداعية وفعالة</li>
+                    <li>تقييم المعلومات والمصادر بموضوعية</li>
+                    <li>تجنب الوقوع في الأخطاء المنطقية والمغالطات</li>
+                    <li>تطوير مهارات التواصل والحوار البناء</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">مهارات التفكير الناقد</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🔍</div>
+                        <div class="grid-title">التحليل</div>
+                        <div class="grid-text">تفكيك المعلومات إلى أجزاء أصغر لفهمها بعمق</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">⚖️</div>
+                        <div class="grid-title">التقييم</div>
+                        <div class="grid-text">الحكم على مصداقية وقوة المعلومات والحجج</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">💭</div>
+                        <div class="grid-title">الاستنتاج</div>
+                        <div class="grid-text">الوصول إلى نتائج منطقية من المعلومات المتاحة</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🧩</div>
+                        <div class="grid-title">التفسير</div>
+                        <div class="grid-text">فهم وشرح معنى المعلومات والبيانات</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الحجج والبراهين</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">بنية الحجة</h3>
+            <div class="card-content">
+                <p>الحجة هي مجموعة من المقدمات (الأدلة) التي تدعم نتيجة أو استنتاج معين.</p>
+
+                <div class="concept-map">
+                    <div class="map-center">عناصر الحجة</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">المقدمات</div>
+                            <div class="branch-items">
+                                العبارات المستخدمة كأدلة<br>
+                                تدعم النتيجة<br>
+                                يجب أن تكون صحيحة
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">النتيجة</div>
+                            <div class="branch-items">
+                                الاستنتاج النهائي<br>
+                                ما تحاول الحجة إثباته<br>
+                                يتبع من المقدمات
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الافتراضات</div>
+                            <div class="branch-items">
+                                معلومات غير مصرح بها<br>
+                                ضرورية لصحة الحجة<br>
+                                قد تكون ضمنية
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>أنواع الحجج:</strong></p>
+                <ul>
+                    <li><strong>الاستدلال الاستنباطي:</strong> من العام إلى الخاص، إذا كانت المقدمات صحيحة فالنتيجة صحيحة حتماً</li>
+                    <li><strong>الاستدلال الاستقرائي:</strong> من الخاص إلى العام، النتيجة محتملة الصحة</li>
+                    <li><strong>الاستدلال بالقياس:</strong> مقارنة حالتين متشابهتين</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">المغالطات المنطقية</h3>
+            <div class="card-content">
+                <p>المغالطة هي خطأ في التفكير يجعل الحجة غير صحيحة أو ضعيفة.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">المغالطة الشخصية</div>
+                        <div class="grid-text">مهاجمة الشخص بدلاً من حجته، محاولة تشويه سمعته</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">مغالطة الرجل القش</div>
+                        <div class="grid-text">تحريف حجة الخصم لتصبح أضعف وأسهل في الهجوم عليها</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">المناشدة العاطفية</div>
+                        <div class="grid-text">استخدام العواطف بدلاً من المنطق لإقناع الآخرين</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">التعميم المتسرع</div>
+                        <div class="grid-text">الوصول لاستنتاج عام من عدد قليل من الأمثلة</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">مغالطة السبب الزائف</div>
+                        <div class="grid-text">افتراض أن الحدث الذي يحدث بعد آخر هو نتيجة له</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">الانحدار الزلق</div>
+                        <div class="grid-text">الادعاء أن خطوة صغيرة ستؤدي حتماً لسلسلة من النتائج السلبية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">حل المشكلات</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">خطوات حل المشكلات</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">عملية حل المشكلات</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">تحديد المشكلة</div>
+                            <div class="branch-items">
+                                فهم المشكلة بوضوح<br>
+                                تحديد السبب الجذري<br>
+                                جمع المعلومات
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">توليد الحلول</div>
+                            <div class="branch-items">
+                                العصف الذهني<br>
+                                اقتراح حلول متعددة<br>
+                                التفكير الإبداعي
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">تقييم الحلول</div>
+                            <div class="branch-items">
+                                مقارنة الخيارات<br>
+                                تحليل الإيجابيات والسلبيات<br>
+                                اختيار الأفضل
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">التنفيذ</div>
+                            <div class="branch-items">
+                                تطبيق الحل المختار<br>
+                                متابعة النتائج<br>
+                                التعديل إذا لزم الأمر
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">استراتيجيات التفكير</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🎨</div>
+                        <div class="grid-title">التفكير الإبداعي</div>
+                        <div class="grid-text">توليد أفكار جديدة ومبتكرة، النظر للمشكلة من زوايا مختلفة</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🔬</div>
+                        <div class="grid-title">التفكير التحليلي</div>
+                        <div class="grid-text">تفكيك المشكلة لأجزاء، فحص كل جزء بعناية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🌍</div>
+                        <div class="grid-title">التفكير المنظومي</div>
+                        <div class="grid-text">النظر للصورة الكاملة، فهم العلاقات والترابطات</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🎯</div>
+                        <div class="grid-title">التفكير المركز</div>
+                        <div class="grid-text">التركيز على هدف محدد، استخدام المنطق والتسلسل</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">تقييم المعلومات</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">تقييم المصادر</h3>
+            <div class="card-content">
+                <p>من المهم التحقق من مصداقية وموثوقية المعلومات قبل الاعتماد عليها.</p>
+
+                <p><strong>معايير تقييم المصادر:</strong></p>
+                <ul>
+                    <li><strong>المصداقية:</strong> هل المصدر موثوق؟ هل المؤلف خبير في المجال؟</li>
+                    <li><strong>الدقة:</strong> هل المعلومات صحيحة؟ هل يمكن التحقق منها؟</li>
+                    <li><strong>الموضوعية:</strong> هل المصدر متحيز؟ هل يعرض وجهات نظر متعددة؟</li>
+                    <li><strong>الحداثة:</strong> متى نُشرت المعلومات؟ هل لا تزال حديثة؟</li>
+                    <li><strong>الملاءمة:</strong> هل المعلومات مناسبة لاحتياجاتك؟</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">التحيزات المعرفية</h3>
+            <div class="card-content">
+                <p>التحيزات المعرفية هي أخطاء منهجية في التفكير تؤثر على قراراتنا وأحكامنا.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">تحيز التأكيد</div>
+                        <div class="grid-text">البحث عن معلومات تؤكد معتقداتنا وتجاهل ما يخالفها</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">تحيز الإرساء</div>
+                        <div class="grid-text">الاعتماد بشكل كبير على أول معلومة نتلقاها</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">تحيز القطيع</div>
+                        <div class="grid-text">الإيمان بشيء لأن الكثيرين يؤمنون به</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">تحيز التوفر</div>
+                        <div class="grid-text">تقدير احتمالية الأحداث بناءً على مدى سهولة تذكرها</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التواصل الفعال</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">الحوار البناء</h3>
+            <div class="card-content">
+                <p>الحوار البناء هو تبادل الأفكار بطريقة محترمة ومنفتحة بهدف الوصول للفهم والحقيقة.</p>
+
+                <p><strong>مبادئ الحوار البناء:</strong></p>
+                <ul>
+                    <li><strong>الاحترام المتبادل:</strong> احترام آراء الآخرين حتى لو اختلفت</li>
+                    <li><strong>الإنصات الفعال:</strong> الاستماع بتركيز وفهم قبل الرد</li>
+                    <li><strong>الانفتاح الذهني:</strong> الاستعداد لتغيير رأيك بناءً على الأدلة</li>
+                    <li><strong>الوضوح:</strong> التعبير عن أفكارك بطريقة واضحة ومفهومة</li>
+                    <li><strong>طرح أسئلة جيدة:</strong> السؤال لفهم وجهة نظر الآخر بعمق</li>
+                </ul>
+
+                <p><strong>أنواع الأسئلة:</strong></p>
+                <ul>
+                    <li><strong>أسئلة مفتوحة:</strong> تتطلب إجابة مفصلة (كيف؟ لماذا؟ ماذا تعتقد؟)</li>
+                    <li><strong>أسئلة مغلقة:</strong> إجابتها نعم أو لا</li>
+                    <li><strong>أسئلة توضيحية:</strong> للحصول على مزيد من التفاصيل</li>
+                    <li><strong>أسئلة تحليلية:</strong> لفحص الأسباب والعلاقات</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('grid-card')) {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                } else if (card.classList.contains('map-branch')) {
+                    card.style.transform = 'scale(1.05)';
+                } else {
+                    card.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

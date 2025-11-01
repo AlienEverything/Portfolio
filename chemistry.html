@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكيمياء - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #2e1a4a 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(156, 39, 176, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #9c27b0, #e91e63, #ff6090);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(156, 39, 176, 0.3);
+            border-color: #9c27b0;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e91e63;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content ul {
+            padding-right: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 1rem;
+        }
+
+        .concept-map {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .map-center {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .map-branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-branch {
+            background: rgba(156, 39, 176, 0.1);
+            border: 2px solid #9c27b0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .map-branch:hover {
+            transform: scale(1.05);
+            background: rgba(156, 39, 176, 0.2);
+        }
+
+        .branch-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e91e63;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch-items {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(156, 39, 176, 0.3);
+            border-color: #9c27b0;
+        }
+
+        .grid-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e91e63;
+            margin-bottom: 1rem;
+        }
+
+        .grid-text {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .reaction-box {
+            background: rgba(156, 39, 176, 0.1);
+            border: 2px solid #9c27b0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            color: #e91e63;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">الكيمياء</div>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">مادة الكيمياء</h1>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التعريف بالكيمياء</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">ما هي الكيمياء؟</h3>
+            <div class="card-content">
+                <p>الكيمياء هي العلم الذي يدرس المادة وخصائصها وتركيبها والتغيرات التي تطرأ عليها. تُعرف الكيمياء بأنها العلم المركزي لأنها تربط بين الفيزياء والعلوم الطبيعية الأخرى. من خلال الكيمياء، نفهم كيف تتفاعل المواد مع بعضها البعض وكيف تتشكل مواد جديدة.</p>
+                
+                <p><strong>أهمية الكيمياء:</strong></p>
+                <ul>
+                    <li>تطوير الأدوية والعلاجات الطبية الحديثة</li>
+                    <li>إنتاج المواد والمنتجات التي نستخدمها يومياً</li>
+                    <li>فهم العمليات الحيوية في أجسامنا</li>
+                    <li>حماية البيئة وتطوير الطاقة النظيفة</li>
+                    <li>تحسين الزراعة وإنتاج الغذاء</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">فروع الكيمياء</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">⚗️</div>
+                        <div class="grid-title">الكيمياء العضوية</div>
+                        <div class="grid-text">دراسة مركبات الكربون، البترول، البلاستيك، والمواد الحيوية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🔬</div>
+                        <div class="grid-title">الكيمياء غير العضوية</div>
+                        <div class="grid-text">دراسة جميع العناصر والمركبات باستثناء معظم مركبات الكربون</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🧬</div>
+                        <div class="grid-title">الكيمياء الحيوية</div>
+                        <div class="grid-text">دراسة التفاعلات الكيميائية في الكائنات الحية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">⚛️</div>
+                        <div class="grid-title">الكيمياء الفيزيائية</div>
+                        <div class="grid-text">دراسة الخصائص الفيزيائية للمواد والطاقة في التفاعلات</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الذرة والعناصر</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">تركيب الذرة</h3>
+            <div class="card-content">
+                <p>الذرة هي أصغر وحدة في المادة تحتفظ بخصائص العنصر. تتكون الذرة من نواة مركزية تحتوي على البروتونات والنيوترونات، تدور حولها الإلكترونات في مستويات طاقة محددة.</p>
+
+                <div class="concept-map">
+                    <div class="map-center">مكونات الذرة</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">البروتون</div>
+                            <div class="branch-items">
+                                شحنة موجبة (+1)<br>
+                                يوجد في النواة<br>
+                                يحدد العدد الذري
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">النيوترون</div>
+                            <div class="branch-items">
+                                متعادل الشحنة (0)<br>
+                                يوجد في النواة<br>
+                                يحدد الكتلة الذرية
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الإلكترون</div>
+                            <div class="branch-items">
+                                شحنة سالبة (-1)<br>
+                                يدور حول النواة<br>
+                                مسؤول عن التفاعلات
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>المفاهيم الأساسية:</strong></p>
+                <ul>
+                    <li><strong>العدد الذري (Z):</strong> عدد البروتونات في النواة</li>
+                    <li><strong>العدد الكتلي (A):</strong> مجموع البروتونات والنيوترونات</li>
+                    <li><strong>النظائر:</strong> ذرات لنفس العنصر بأعداد نيوترونات مختلفة</li>
+                    <li><strong>الأيونات:</strong> ذرات اكتسبت أو فقدت إلكترونات</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">الجدول الدوري</h3>
+            <div class="card-content">
+                <p>الجدول الدوري هو ترتيب منظم لجميع العناصر الكيميائية حسب أعدادها الذرية وخصائصها الكيميائية. يتكون من دورات أفقية ومجموعات رأسية.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🔴</div>
+                        <div class="grid-title">الفلزات</div>
+                        <div class="grid-text">موصلة للحرارة والكهرباء، لامعة، قابلة للطرق والسحب</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🔵</div>
+                        <div class="grid-title">اللافلزات</div>
+                        <div class="grid-text">رديئة التوصيل، هشة، توجد في جميع الحالات الفيزيائية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🟡</div>
+                        <div class="grid-title">أشباه الفلزات</div>
+                        <div class="grid-text">خصائص بين الفلزات واللافلزات، مثل السيليكون</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🟢</div>
+                        <div class="grid-title">الغازات النبيلة</div>
+                        <div class="grid-text">مستقرة كيميائياً، لا تتفاعل بسهولة، المجموعة 18</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الروابط الكيميائية</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">أنواع الروابط</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">الروابط الكيميائية</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">الرابطة الأيونية</div>
+                            <div class="branch-items">
+                                انتقال إلكترونات<br>
+                                بين فلز ولافلز<br>
+                                قوية، درجة انصهار عالية<br>
+                                مثل: NaCl
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الرابطة التساهمية</div>
+                            <div class="branch-items">
+                                مشاركة إلكترونات<br>
+                                بين لافلزات<br>
+                                قوية نسبياً<br>
+                                مثل: H₂O, CO₂
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الرابطة الفلزية</div>
+                            <div class="branch-items">
+                                بحر من الإلكترونات<br>
+                                بين ذرات فلزية<br>
+                                توصيل كهربائي عالي<br>
+                                مثل: Fe, Cu
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الرابطة الهيدروجينية</div>
+                            <div class="branch-items">
+                                رابطة ضعيفة<br>
+                                بين الجزيئات<br>
+                                مهمة في الماء والبروتينات<br>
+                                خصائص فريدة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التفاعلات الكيميائية</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">أنواع التفاعلات</h3>
+            <div class="card-content">
+                <p><strong>التفاعل الكيميائي:</strong> عملية تحول المواد المتفاعلة إلى مواد جديدة ذات خصائص مختلفة.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">الاتحاد (التركيب)</div>
+                        <div class="reaction-box">A + B → AB</div>
+                        <div class="grid-text">مثال: 2H₂ + O₂ → 2H₂O</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">التحلل (التفكك)</div>
+                        <div class="reaction-box">AB → A + B</div>
+                        <div class="grid-text">مثال: 2H₂O → 2H₂ + O₂</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">الإحلال البسيط</div>
+                        <div class="reaction-box">A + BC → AC + B</div>
+                        <div class="grid-text">مثال: Zn + 2HCl → ZnCl₂ + H₂</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">الإحلال المزدوج</div>
+                        <div class="reaction-box">AB + CD → AD + CB</div>
+                        <div class="grid-text">مثال: NaCl + AgNO₃ → NaNO₃ + AgCl</div>
+                    </div>
+                </div>
+
+                <p><strong>موازنة المعادلات الكيميائية:</strong></p>
+                <ul>
+                    <li>عدد ذرات كل عنصر يجب أن يكون متساوياً في الطرفين</li>
+                    <li>استخدام المعاملات وليس تغيير الصيغ الكيميائية</li>
+                    <li>البدء بالعناصر الأقل تكراراً</li>
+                    <li>التحقق من التوازن النهائي</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">الطاقة في التفاعلات</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🔥</div>
+                        <div class="grid-title">التفاعلات الطاردة للحرارة</div>
+                        <div class="grid-text">تطلق طاقة للوسط المحيط، ترتفع درجة الحرارة، مثل الاحتراق</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">❄️</div>
+                        <div class="grid-title">التفاعلات الماصة للحرارة</div>
+                        <div class="grid-text">تمتص طاقة من الوسط المحيط، تنخفض درجة الحرارة، مثل التحليل الكهربائي</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">حالات المادة</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">الحالات الثلاث للمادة</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">حالات المادة</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">الحالة الصلبة</div>
+                            <div class="branch-items">
+                                جزيئات متقاربة جداً<br>
+                                شكل وحجم ثابتان<br>
+                                حركة اهتزازية بسيطة<br>
+                                كثافة عالية
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الحالة السائلة</div>
+                            <div class="branch-items">
+                                جزيئات متقاربة نسبياً<br>
+                                حجم ثابت، شكل متغير<br>
+                                حركة انزلاقية<br>
+                                كثافة متوسطة
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الحالة الغازية</div>
+                            <div class="branch-items">
+                                جزيئات متباعدة جداً<br>
+                                شكل وحجم متغيران<br>
+                                حركة عشوائية سريعة<br>
+                                كثافة منخفضة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>التغيرات الفيزيائية:</strong></p>
+                <ul>
+                    <li><strong>الانصهار:</strong> من صلب إلى سائل (يمتص حرارة)</li>
+                    <li><strong>التجمد:</strong> من سائل إلى صلب (يطلق حرارة)</li>
+                    <li><strong>التبخر:</strong> من سائل إلى غاز (يمتص حرارة)</li>
+                    <li><strong>التكثف:</strong> من غاز إلى سائل (يطلق حرارة)</li>
+                    <li><strong>التسامي:</strong> من صلب إلى غاز مباشرة</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">المحاليل والتركيز</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">المحلول</h3>
+            <div class="card-content">
+                <p>المحلول هو مخلوط متجانس يتكون من مذاب ومذيب. المذيب هو المادة الأكثر، والمذاب هو المادة الأقل التي تذوب في المذيب.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">المحلول المشبع</div>
+                        <div class="grid-text">يحتوي على أقصى كمية من المذاب عند درجة حرارة معينة</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">المحلول غير المشبع</div>
+                        <div class="grid-text">يمكنه إذابة كمية إضافية من المذاب</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">المحلول فوق المشبع</div>
+                        <div class="grid-text">يحتوي على كمية من المذاب أكبر من الكمية القصوى، غير مستقر</div>
+                    </div>
+                </div>
+
+                <p><strong>طرق التعبير عن التركيز:</strong></p>
+                <ul>
+                    <li><strong>المولارية (M):</strong> عدد مولات المذاب لكل لتر محلول</li>
+                    <li><strong>النسبة المئوية بالكتلة:</strong> (كتلة المذاب / كتلة المحلول) × 100</li>
+                    <li><strong>النسبة المئوية بالحجم:</strong> (حجم المذاب / حجم المحلول) × 100</li>
+                    <li><strong>الجزء في المليون (ppm):</strong> لتركيزات قليلة جداً</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('grid-card')) {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                } else if (card.classList.contains('map-branch')) {
+                    card.style.transform = 'scale(1.05)';
+                } else {
+                    card.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

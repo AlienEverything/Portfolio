@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التفسير - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a3a1a 50%, #2e4a1a 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #4caf50, #8bc34a, #c5e1a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(76, 175, 80, 0.3);
+            border-color: #4caf50;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content ul {
+            padding-right: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 1rem;
+        }
+
+        .concept-map {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .map-center {
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .map-branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-branch {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4caf50;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .map-branch:hover {
+            transform: scale(1.05);
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .branch-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8bc34a;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch-items {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
+            border-color: #4caf50;
+        }
+
+        .grid-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8bc34a;
+            margin-bottom: 1rem;
+        }
+
+        .grid-text {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .verse-box {
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-size: 1.4rem;
+            color: #8bc34a;
+            font-weight: 600;
+            line-height: 2.2;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">التفسير</div>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">مادة التفسير</h1>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التعريف بعلم التفسير</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">ما هو علم التفسير؟</h3>
+            <div class="card-content">
+                <p>علم التفسير هو علم يبحث في فهم كتاب الله تعالى وبيان معانيه واستخراج أحكامه وحكمه. يهدف إلى توضيح مراد الله تعالى من كلامه بقدر ما يستطيعه البشر، وهو من أشرف العلوم لتعلقه بكلام الله عز وجل.</p>
+                
+                <p><strong>أهمية علم التفسير:</strong></p>
+                <ul>
+                    <li>فهم كتاب الله تعالى والعمل بما فيه</li>
+                    <li>معرفة الأحكام الشرعية والعقائد الصحيحة</li>
+                    <li>الاهتداء بهدي القرآن في جميع شؤون الحياة</li>
+                    <li>الوقوف على أسرار القرآن وإعجازه</li>
+                    <li>زيادة الإيمان والخشوع في القلب</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">مصادر التفسير</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">📖</div>
+                        <div class="grid-title">القرآن بالقرآن</div>
+                        <div class="grid-text">أفضل طرق التفسير، حيث يفسر القرآن بعضه بعضاً</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">☪️</div>
+                        <div class="grid-title">السنة النبوية</div>
+                        <div class="grid-text">أحاديث النبي ﷺ التي تشرح وتوضح معاني القرآن</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">👥</div>
+                        <div class="grid-title">أقوال الصحابة</div>
+                        <div class="grid-text">تفسيرات الصحابة رضي الله عنهم لما شهدوا التنزيل</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🕌</div>
+                        <div class="grid-title">أقوال التابعين</div>
+                        <div class="grid-text">تفسيرات التابعين الذين تعلموا من الصحابة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">أنواع التفسير</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">تقسيمات علم التفسير</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">أنواع التفسير</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">التفسير بالمأثور</div>
+                            <div class="branch-items">
+                                بالقرآن والسنة<br>
+                                بأقوال الصحابة والتابعين<br>
+                                أوثق أنواع التفسير
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">التفسير بالرأي</div>
+                            <div class="branch-items">
+                                بالاجتهاد المبني على العلم<br>
+                                معرفة اللغة والأصول<br>
+                                الالتزام بالضوابط الشرعية
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">التفسير الموضوعي</div>
+                            <div class="branch-items">
+                                جمع الآيات حول موضوع واحد<br>
+                                دراسة شاملة للموضوع<br>
+                                استخراج المعاني المتكاملة
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">التفسير التحليلي</div>
+                            <div class="branch-items">
+                                تفسير الآيات بالتسلسل<br>
+                                دراسة تفصيلية<br>
+                                شرح المفردات والمعاني
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">موضوعات من منهج الصف الأول الثانوي</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">سورة الكهف</h3>
+            <div class="card-content">
+                <p>سورة الكهف من السور المكية التي تتناول قصصاً عظيمة فيها عبر ودروس للمؤمنين.</p>
+
+                <div class="verse-box">
+                    ﴿ إِنَّا جَعَلْنَا مَا عَلَى الْأَرْضِ زِينَةً لَّهَا لِنَبْلُوَهُمْ أَيُّهُمْ أَحْسَنُ عَمَلًا ﴾
+                </div>
+
+                <p><strong>قصص سورة الكهف الأربع:</strong></p>
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">أصحاب الكهف</div>
+                        <div class="grid-text">
+                            الفتية المؤمنون الذين فروا بدينهم<br>
+                            ثبات على العقيدة<br>
+                            فتنة الدين
+                        </div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">صاحب الجنتين</div>
+                        <div class="grid-text">
+                            قصة الرجلين<br>
+                            الكبر والغرور بالمال<br>
+                            فتنة المال
+                        </div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">موسى والخضر</div>
+                        <div class="grid-text">
+                            رحلة طلب العلم<br>
+                            التواضع للمعلم<br>
+                            فتنة العلم
+                        </div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">ذو القرنين</div>
+                        <div class="grid-text">
+                            الملك الصالح العادل<br>
+                            استخدام القوة في الخير<br>
+                            فتنة السلطة
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">آيات من سورة البقرة</h3>
+            <div class="card-content">
+                <p>سورة البقرة أطول سور القرآن وتضم أحكاماً وتوجيهات عديدة.</p>
+
+                <div class="verse-box">
+                    ﴿ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ﴾
+                </div>
+
+                <p><strong>آية الكرسي - أعظم آية في القرآن:</strong></p>
+                <ul>
+                    <li>إثبات وحدانية الله تعالى</li>
+                    <li>بيان صفات الله العظيمة</li>
+                    <li>سعة علم الله وملكه</li>
+                    <li>عظمة الله وعلوه على خلقه</li>
+                </ul>
+
+                <p><strong>فضائل آية الكرسي:</strong></p>
+                <ul>
+                    <li>من قرأها في ليلة لم يزل عليه من الله حافظ</li>
+                    <li>لا يقربه شيطان حتى يصبح</li>
+                    <li>من أعظم الآيات في القرآن</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">سورة الملك</h3>
+            <div class="card-content">
+                <p>سورة الملك من السور المكية التي تتحدث عن عظمة الله وقدرته.</p>
+
+                <div class="verse-box">
+                    ﴿ تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ ﴾
+                </div>
+
+                <p><strong>موضوعات سورة الملك:</strong></p>
+                <ul>
+                    <li><strong>الملك والقدرة:</strong> إثبات ملك الله المطلق وقدرته</li>
+                    <li><strong>خلق الموت والحياة:</strong> الابتلاء والامتحان في الدنيا</li>
+                    <li><strong>عظمة خلق السماوات:</strong> دلائل قدرة الله</li>
+                    <li><strong>عاقبة الكافرين:</strong> مصير من كفر بالله</li>
+                    <li><strong>نعم الله:</strong> تسخير الأرض والرزق</li>
+                </ul>
+
+                <p><strong>فضل سورة الملك:</strong></p>
+                <ul>
+                    <li>المانعة من عذاب القبر</li>
+                    <li>المنجية والمجادلة عن صاحبها</li>
+                    <li>استحباب قراءتها كل ليلة</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">قواعد في التفسير</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">ضوابط التفسير</h3>
+            <div class="card-content">
+                <p><strong>الضوابط الواجب مراعاتها في التفسير:</strong></p>
+                <ul>
+                    <li><strong>معرفة اللغة العربية:</strong> فهم معاني المفردات والتراكيب</li>
+                    <li><strong>معرفة أسباب النزول:</strong> لفهم السياق والمناسبة</li>
+                    <li><strong>الالتزام بما ورد عن السلف:</strong> من الصحابة والتابعين</li>
+                    <li><strong>عدم التفسير بالرأي المجرد:</strong> دون علم وأصول</li>
+                    <li><strong>فهم المقاصد الشرعية:</strong> والحكم من الآيات</li>
+                    <li><strong>الجمع بين الأدلة:</strong> وعدم التعارض المفتعل</li>
+                </ul>
+
+                <p><strong>آداب التعامل مع القرآن:</strong></p>
+                <ul>
+                    <li>الطهارة والوضوء عند القراءة</li>
+                    <li>الاستعاذة والبسملة</li>
+                    <li>التدبر والتأمل في المعاني</li>
+                    <li>الخشوع والتأثر بالآيات</li>
+                    <li>العمل بما فيه من أوامر ونواهي</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">أنواع الإعجاز في القرآن</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">إعجاز القرآن</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">الإعجاز اللغوي</div>
+                            <div class="branch-items">
+                                بلاغة فريدة<br>
+                                فصاحة عالية<br>
+                                نظم معجز
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الإعجاز العلمي</div>
+                            <div class="branch-items">
+                                حقائق علمية<br>
+                                سبق القرآن للعلم<br>
+                                توافق مع الاكتشافات
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الإعجاز التشريعي</div>
+                            <div class="branch-items">
+                                أحكام عادلة<br>
+                                شمولية التشريع<br>
+                                صلاحية لكل زمان
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الإعجاز الغيبي</div>
+                            <div class="branch-items">
+                                أخبار الأمم السابقة<br>
+                                نبوءات تحققت<br>
+                                علم بالمستقبل
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">مقاصد القرآن الكريم</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">المقاصد العامة</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">☪️</div>
+                        <div class="grid-title">العقيدة</div>
+                        <div class="grid-text">تصحيح الاعتقاد وتوحيد الله تعالى وبيان أسمائه وصفاته</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">⚖️</div>
+                        <div class="grid-title">التشريع</div>
+                        <div class="grid-text">بيان الأحكام الشرعية في العبادات والمعاملات</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">❤️</div>
+                        <div class="grid-title">الأخلاق</div>
+                        <div class="grid-text">الدعوة إلى مكارم الأخلاق والآداب الحسنة</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📚</div>
+                        <div class="grid-title">القصص</div>
+                        <div class="grid-text">العبرة والعظة من قصص الأنبياء والأمم السابقة</div>
+                    </div>
+                </div>
+
+                <p><strong>الهدف الأسمى:</strong></p>
+                <p>تحقيق عبودية الله تعالى، وإصلاح الفرد والمجتمع، وتحقيق السعادة في الدنيا والآخرة.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('grid-card')) {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                } else if (card.classList.contains('map-branch')) {
+                    card.style.transform = 'scale(1.05)';
+                } else {
+                    card.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+===== COPY THE ABOVE AND SAVE AS: tafseer.html =====

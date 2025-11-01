@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرياضيات - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a2e4a 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b00, #ffa500);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b00, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #ff6b00, #ffa500);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff6b00, #ffa500, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b00, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255, 107, 0, 0.3);
+            border-color: #ff6b00;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content ul {
+            padding-right: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 1rem;
+        }
+
+        .concept-map {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .map-center {
+            background: linear-gradient(45deg, #ff6b00, #ffa500);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .map-branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-branch {
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .map-branch:hover {
+            transform: scale(1.05);
+            background: rgba(255, 107, 0, 0.2);
+        }
+
+        .branch-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch-items {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 0, 0.3);
+            border-color: #ff6b00;
+        }
+
+        .grid-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 1rem;
+        }
+
+        .grid-text {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .formula-box {
+            background: rgba(255, 107, 0, 0.1);
+            border: 2px solid #ff6b00;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            color: #ffa500;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">الرياضيات</div>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">مادة الرياضيات</h1>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التعريف بالرياضيات</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">ما هي الرياضيات؟</h3>
+            <div class="card-content">
+                <p>الرياضيات هي علم الأرقام والكميات والأشكال والأنماط. إنها لغة العلوم التي تساعدنا على فهم العالم من حولنا وحل المشكلات بطريقة منطقية ومنظمة. تعتبر الرياضيات أساس جميع العلوم الطبيعية والتطبيقية.</p>
+                
+                <p><strong>أهمية الرياضيات:</strong></p>
+                <ul>
+                    <li>أساس العلوم الطبيعية والهندسة والتكنولوجيا</li>
+                    <li>تطوير مهارات التفكير المنطقي والتحليلي</li>
+                    <li>حل المشكلات اليومية واتخاذ القرارات المبنية على البيانات</li>
+                    <li>فهم الظواهر الطبيعية والاقتصادية</li>
+                    <li>تطوير التكنولوجيا الحديثة وعلوم الكمبيوتر</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">فروع الرياضيات</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">➕</div>
+                        <div class="grid-title">الجبر</div>
+                        <div class="grid-text">دراسة الرموز والقواعد لمعالجة الرموز، حل المعادلات والمتباينات، والعمليات على الحدود الجبرية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📐</div>
+                        <div class="grid-title">الهندسة</div>
+                        <div class="grid-text">دراسة الأشكال والمساحات والأحجام، خصائص الأشكال الهندسية والعلاقات المكانية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📊</div>
+                        <div class="grid-title">الإحصاء والاحتمالات</div>
+                        <div class="grid-text">جمع وتحليل وتفسير البيانات، حساب الاحتمالات والتنبؤ بالأحداث المستقبلية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📈</div>
+                        <div class="grid-title">التفاضل والتكامل</div>
+                        <div class="grid-text">دراسة معدلات التغير والمساحات تحت المنحنيات، أساس الفيزياء والهندسة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">منهج الصف الأول الثانوي</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">الجبر والمعادلات</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">موضوعات الجبر</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">كثيرات الحدود</div>
+                            <div class="branch-items">
+                                الجمع والطرح والضرب<br>
+                                القسمة المطولة<br>
+                                التحليل إلى العوامل
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">المعادلات</div>
+                            <div class="branch-items">
+                                المعادلات الخطية<br>
+                                المعادلات التربيعية<br>
+                                أنظمة المعادلات
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">المتباينات</div>
+                            <div class="branch-items">
+                                المتباينات الخطية<br>
+                                المتباينات المركبة<br>
+                                المتباينات المطلقة
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الأسس والجذور</div>
+                            <div class="branch-items">
+                                قوانين الأسس<br>
+                                الجذور التربيعية والتكعيبية<br>
+                                الأسس الكسرية
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>الصيغة التربيعية:</strong></p>
+                <div class="formula-box">
+                    x = (-b ± √(b² - 4ac)) / 2a
+                </div>
+                <p>حيث ax² + bx + c = 0 هي المعادلة التربيعية العامة</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">الدوال والعلاقات</h3>
+            <div class="card-content">
+                <p><strong>الدالة:</strong> علاقة بين مجموعتين بحيث كل عنصر من المجموعة الأولى يرتبط بعنصر واحد فقط من المجموعة الثانية.</p>
+
+                <div class="concept-map">
+                    <div class="map-center">أنواع الدوال</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">الدوال الخطية</div>
+                            <div class="branch-items">
+                                الصيغة: y = mx + b<br>
+                                الميل والمقطع<br>
+                                التمثيل البياني خط مستقيم
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الدوال التربيعية</div>
+                            <div class="branch-items">
+                                الصيغة: y = ax² + bx + c<br>
+                                القطع المكافئ<br>
+                                نقطة الرأس والمحور
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الدوال الأسية</div>
+                            <div class="branch-items">
+                                الصيغة: y = a·bˣ<br>
+                                النمو والاضمحلال<br>
+                                التطبيقات الواقعية
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">دالة القيمة المطلقة</div>
+                            <div class="branch-items">
+                                الصيغة: y = |x|<br>
+                                التمثيل على شكل V<br>
+                                دائماً قيم موجبة
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">حساب المثلثات</h3>
+            <div class="card-content">
+                <p>حساب المثلثات هو فرع من الرياضيات يدرس العلاقات بين أضلاع وزوايا المثلثات.</p>
+
+                <p><strong>النسب المثلثية الأساسية:</strong></p>
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">الجيب (sin)</div>
+                        <div class="formula-box">sin θ = المقابل / الوتر</div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-title">جيب التمام (cos)</div>
+                        <div class="formula-box">cos θ = المجاور / الوتر</div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-title">الظل (tan)</div>
+                        <div class="formula-box">tan θ = المقابل / المجاور</div>
+                    </div>
+                </div>
+
+                <p><strong>نظرية فيثاغورس:</strong></p>
+                <div class="formula-box">
+                    a² + b² = c²
+                </div>
+                <p>حيث c هو طول الوتر، وa وb هما طولا الضلعين الآخرين في المثلث القائم</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الهندسة والأشكال</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">الأشكال الهندسية الأساسية</h3>
+            <div class="card-content">
+                <div class="concept-map">
+                    <div class="map-center">الأشكال الهندسية</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">المثلثات</div>
+                            <div class="branch-items">
+                                متساوي الأضلاع<br>
+                                متساوي الساقين<br>
+                                مختلف الأضلاع<br>
+                                قائم الزاوية
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الأشكال الرباعية</div>
+                            <div class="branch-items">
+                                المربع والمستطيل<br>
+                                المعين ومتوازي الأضلاع<br>
+                                شبه المنحرف<br>
+                                الطائرة الورقية
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الدوائر</div>
+                            <div class="branch-items">
+                                المحيط والقطر ونصف القطر<br>
+                                المساحة<br>
+                                القطاعات والأقواس<br>
+                                الأوتار والمماسات
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">المجسمات</div>
+                            <div class="branch-items">
+                                المكعب ومتوازي المستطيلات<br>
+                                الأسطوانة والمخروط<br>
+                                الكرة<br>
+                                الهرم والمنشور
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>قوانين المساحة والمحيط:</strong></p>
+                <ul>
+                    <li><strong>المربع:</strong> المساحة = s²، المحيط = 4s</li>
+                    <li><strong>المستطيل:</strong> المساحة = l × w، المحيط = 2(l + w)</li>
+                    <li><strong>المثلث:</strong> المساحة = ½ × القاعدة × الارتفاع</li>
+                    <li><strong>الدائرة:</strong> المساحة = πr²، المحيط = 2πr</li>
+                    <li><strong>شبه المنحرف:</strong> المساحة = ½ × (القاعدة الأولى + القاعدة الثانية) × الارتفاع</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">الحجوم والمساحات السطحية</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">المكعب</div>
+                        <div class="grid-text">
+                            <div class="formula-box">V = s³</div>
+                            <div class="formula-box">المساحة السطحية = 6s²</div>
+                        </div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-title">الأسطوانة</div>
+                        <div class="grid-text">
+                            <div class="formula-box">V = πr²h</div>
+                            <div class="formula-box">المساحة = 2πr(r + h)</div>
+                        </div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-title">الكرة</div>
+                        <div class="grid-text">
+                            <div class="formula-box">V = (4/3)πr³</div>
+                            <div class="formula-box">المساحة = 4πr²</div>
+                        </div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-title">المخروط</div>
+                        <div class="grid-text">
+                            <div class="formula-box">V = (1/3)πr²h</div>
+                            <div class="formula-box">المساحة = πr(r + l)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الإحصاء والاحتمالات</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">مقاييس النزعة المركزية</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">📊</div>
+                        <div class="grid-title">المتوسط الحسابي</div>
+                        <div class="grid-text">مجموع القيم مقسوماً على عددها، يتأثر بالقيم المتطرفة</div>
+                        <div class="formula-box">المتوسط = Σx / n</div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-icon">🎯</div>
+                        <div class="grid-title">الوسيط</div>
+                        <div class="grid-text">القيمة الوسطى عند ترتيب البيانات، لا يتأثر بالقيم المتطرفة</div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-icon">📌</div>
+                        <div class="grid-title">المنوال</div>
+                        <div class="grid-text">القيمة الأكثر تكراراً في مجموعة البيانات</div>
+                    </div>
+                    <div class="grid-card">
+                        <div class="grid-icon">📈</div>
+                        <div class="grid-title">المدى</div>
+                        <div class="grid-text">الفرق بين أكبر قيمة وأصغر قيمة في البيانات</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">الاحتمالات</h3>
+            <div class="card-content">
+                <p><strong>الاحتمال:</strong> قياس إمكانية حدوث حدث معين، قيمته بين 0 و 1</p>
+
+                <div class="formula-box">
+                    الاحتمال = عدد النواتج المرغوبة / عدد النواتج الممكنة
+                </div>
+
+                <p><strong>قوانين الاحتمالات:</strong></p>
+                <ul>
+                    <li><strong>قانون الجمع:</strong> P(A أو B) = P(A) + P(B) - P(A و B)</li>
+                    <li><strong>قانون الضرب (أحداث مستقلة):</strong> P(A و B) = P(A) × P(B)</li>
+                    <li><strong>الحدث المكمل:</strong> P(A') = 1 - P(A)</li>
+                    <li><strong>الأحداث المستحيلة:</strong> احتمالها = 0</li>
+                    <li><strong>الأحداث المؤكدة:</strong> احتمالها = 1</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('grid-card')) {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                } else if (card.classList.contains('map-branch')) {
+                    card.style.transform = 'scale(1.05)';
+                } else {
+                    card.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

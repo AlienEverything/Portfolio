@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفيزياء - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a2a4a 50%, #2e1a4a 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 191, 255, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #00bfff, #1e90ff, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 191, 255, 0.3);
+            border-color: #00bfff;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00bfff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content ul {
+            padding-right: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content li {
+            margin-bottom: 1rem;
+        }
+
+        .concept-map {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .map-center {
+            background: linear-gradient(45deg, #00bfff, #1e90ff);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .map-branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-branch {
+            background: rgba(0, 191, 255, 0.1);
+            border: 2px solid #00bfff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .map-branch:hover {
+            transform: scale(1.05);
+            background: rgba(0, 191, 255, 0.2);
+        }
+
+        .branch-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e90ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch-items {
+            font-size: 1rem;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+            border-color: #00bfff;
+        }
+
+        .grid-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e90ff;
+            margin-bottom: 1rem;
+        }
+
+        .grid-text {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .formula-box {
+            background: rgba(0, 191, 255, 0.1);
+            border: 2px solid #00bfff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            color: #1e90ff;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">الفيزياء</div>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">مادة الفيزياء</h1>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">التعريف بالفيزياء</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">ما هي الفيزياء؟</h3>
+            <div class="card-content">
+                <p>الفيزياء هي العلم الذي يدرس المادة والطاقة والعلاقات بينهما. تسعى الفيزياء لفهم قوانين الطبيعة الأساسية التي تحكم الكون، من أصغر الجسيمات دون الذرية إلى أكبر المجرات. تعتبر الفيزياء أساس جميع العلوم الطبيعية.</p>
+                
+                <p><strong>أهمية الفيزياء:</strong></p>
+                <ul>
+                    <li>فهم القوانين الأساسية للكون والطبيعة</li>
+                    <li>تطوير التكنولوجيا الحديثة والأجهزة الإلكترونية</li>
+                    <li>تطبيقات في الطب والهندسة والفضاء</li>
+                    <li>تفسير الظواهر الطبيعية من حولنا</li>
+                    <li>أساس الابتكارات والاختراعات الحديثة</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">فروع الفيزياء</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-icon">🏃</div>
+                        <div class="grid-title">الميكانيكا</div>
+                        <div class="grid-text">دراسة الحركة والقوى وتأثيرها على الأجسام</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">🔥</div>
+                        <div class="grid-title">الحرارة</div>
+                        <div class="grid-text">دراسة الطاقة الحرارية وانتقالها وتأثيراتها</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">💡</div>
+                        <div class="grid-title">الكهرومغناطيسية</div>
+                        <div class="grid-text">دراسة الكهرباء والمغناطيسية والضوء</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-icon">📊</div>
+                        <div class="grid-title">الموجات والصوت</div>
+                        <div class="grid-text">دراسة انتقال الطاقة عبر الموجات</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الحركة والقوى</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">علم الحركة</h3>
+            <div class="card-content">
+                <p>علم الحركة يدرس حركة الأجسام دون النظر إلى القوى المسببة لها.</p>
+
+                <div class="concept-map">
+                    <div class="map-center">عناصر الحركة</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">الإزاحة</div>
+                            <div class="branch-items">
+                                التغير في الموقع<br>
+                                كمية متجهة<br>
+                                الوحدة: متر (m)
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">السرعة</div>
+                            <div class="branch-items">
+                                معدل تغير الإزاحة<br>
+                                كمية متجهة<br>
+                                الوحدة: م/ث
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">التسارع</div>
+                            <div class="branch-items">
+                                معدل تغير السرعة<br>
+                                كمية متجهة<br>
+                                الوحدة: م/ث²
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>معادلات الحركة:</strong></p>
+                <div class="formula-box">v = v₀ + at</div>
+                <div class="formula-box">s = v₀t + ½at²</div>
+                <div class="formula-box">v² = v₀² + 2as</div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">قوانين نيوتن للحركة</h3>
+            <div class="card-content">
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">القانون الأول (القصور الذاتي)</div>
+                        <div class="grid-text">الجسم يبقى في حالة سكون أو حركة منتظمة في خط مستقيم ما لم تؤثر عليه قوة خارجية</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">القانون الثاني (القوة والتسارع)</div>
+                        <div class="grid-text">القوة = الكتلة × التسارع</div>
+                        <div class="formula-box">F = ma</div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">القانون الثالث (الفعل ورد الفعل)</div>
+                        <div class="grid-text">لكل فعل رد فعل مساو له في المقدار ومعاكس له في الاتجاه</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الطاقة والشغل</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">الشغل والطاقة</h3>
+            <div class="card-content">
+                <p><strong>الشغل:</strong> هو حاصل ضرب القوة في الإزاحة في اتجاه القوة</p>
+                <div class="formula-box">W = F × d × cos θ</div>
+                <p>الوحدة: جول (J)</p>
+
+                <div class="concept-map">
+                    <div class="map-center">أنواع الطاقة</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">طاقة الحركة</div>
+                            <div class="branch-items">
+                                طاقة الجسم المتحرك<br>
+                                KE = ½mv²<br>
+                                تعتمد على السرعة
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">طاقة الوضع</div>
+                            <div class="branch-items">
+                                طاقة الجسم بسبب موقعه<br>
+                                PE = mgh<br>
+                                تعتمد على الارتفاع
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الطاقة الميكانيكية</div>
+                            <div class="branch-items">
+                                مجموع طاقتي الحركة والوضع<br>
+                                E = KE + PE<br>
+                                محفوظة في نظام معزول
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>قانون حفظ الطاقة:</strong></p>
+                <p>الطاقة لا تُفنى ولا تُستحدث من العدم، وإنما تتحول من شكل إلى آخر. الطاقة الكلية في نظام معزول تبقى ثابتة.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الكهرباء والمغناطيسية</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">الكهرباء الساكنة</h3>
+            <div class="card-content">
+                <p>الكهرباء الساكنة تنتج من تراكم الشحنات الكهربائية على سطح الأجسام.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">الشحنة الكهربائية</div>
+                        <div class="grid-text">
+                            موجبة (+) وسالبة (-)<br>
+                            الشحنات المتشابهة تتنافر<br>
+                            الشحنات المختلفة تتجاذب<br>
+                            الوحدة: كولوم (C)
+                        </div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">قانون كولوم</div>
+                        <div class="grid-text">القوة بين شحنتين تتناسب طرداً مع حاصل ضربهما وعكسياً مع مربع المسافة</div>
+                        <div class="formula-box">F = k(q₁q₂)/r²</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">التيار الكهربائي</h3>
+            <div class="card-content">
+                <p><strong>التيار الكهربائي:</strong> معدل تدفق الشحنات الكهربائية عبر موصل</p>
+                <div class="formula-box">I = Q/t</div>
+                <p>الوحدة: أمبير (A)</p>
+
+                <p><strong>قانون أوم:</strong></p>
+                <div class="formula-box">V = I × R</div>
+                <ul>
+                    <li><strong>V:</strong> الجهد الكهربائي (فولت)</li>
+                    <li><strong>I:</strong> التيار (أمبير)</li>
+                    <li><strong>R:</strong> المقاومة (أوم Ω)</li>
+                </ul>
+
+                <p><strong>القدرة الكهربائية:</strong></p>
+                <div class="formula-box">P = V × I = I²R = V²/R</div>
+                <p>الوحدة: واط (W)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الموجات والصوت</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">خصائص الموجات</h3>
+            <div class="card-content">
+                <p>الموجة هي اضطراب ينتقل عبر وسط ناقلاً الطاقة دون نقل المادة.</p>
+
+                <div class="concept-map">
+                    <div class="map-center">أنواع الموجات</div>
+                    <div class="map-branches">
+                        <div class="map-branch">
+                            <div class="branch-title">الموجات الميكانيكية</div>
+                            <div class="branch-items">
+                                تحتاج وسط للانتقال<br>
+                                مثل: الصوت والماء<br>
+                                طولية أو مستعرضة
+                            </div>
+                        </div>
+                        <div class="map-branch">
+                            <div class="branch-title">الموجات الكهرومغناطيسية</div>
+                            <div class="branch-items">
+                                لا تحتاج وسط<br>
+                                مثل: الضوء والراديو<br>
+                                تنتقل في الفراغ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>خصائص الموجة:</strong></p>
+                <ul>
+                    <li><strong>الطول الموجي (λ):</strong> المسافة بين قمتين متتاليتين</li>
+                    <li><strong>التردد (f):</strong> عدد الموجات في الثانية، الوحدة: هرتز (Hz)</li>
+                    <li><strong>السعة (A):</strong> أقصى إزاحة عن موضع الاتزان</li>
+                    <li><strong>السرعة (v):</strong> v = f × λ</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title">الصوت</h3>
+            <div class="card-content">
+                <p>الصوت موجة ميكانيكية طولية تنتقل عبر الأوساط المادية.</p>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">سرعة الصوت</div>
+                        <div class="grid-text">
+                            في الهواء: 343 م/ث<br>
+                            في الماء: 1500 م/ث<br>
+                            في الفولاذ: 5000 م/ث<br>
+                            تزداد بارتفاع درجة الحرارة
+                        </div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">خصائص الصوت</div>
+                        <div class="grid-text">
+                            <strong>شدة الصوت:</strong> الطاقة المنقولة<br>
+                            <strong>الحدة:</strong> تعتمد على التردد<br>
+                            <strong>النوعية:</strong> تميز المصادر
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">الضوء والبصريات</h2>
+        
+        <div class="content-card">
+            <h3 class="card-title">طبيعة الضوء</h3>
+            <div class="card-content">
+                <p>الضوء موجة كهرومغناطيسية وله خصائص موجية وجسيمية معاً.</p>
+
+                <p><strong>سرعة الضوء:</strong></p>
+                <div class="formula-box">c = 3 × 10⁸ m/s</div>
+
+                <p><strong>قوانين الانعكاس:</strong></p>
+                <ul>
+                    <li>زاوية السقوط = زاوية الانعكاس</li>
+                    <li>الشعاع الساقط والمنعكس والعمود في مستوى واحد</li>
+                </ul>
+
+                <p><strong>الانكسار:</strong></p>
+                <p>انحراف الضوء عند انتقاله من وسط إلى آخر بسبب تغير سرعته</p>
+                <div class="formula-box">n₁ sin θ₁ = n₂ sin θ₂</div>
+
+                <div class="grid-container">
+                    <div class="grid-card">
+                        <div class="grid-title">المرايا</div>
+                        <div class="grid-text">
+                            <strong>المستوية:</strong> صورة تقديرية<br>
+                            <strong>المقعرة:</strong> تجمع الضوء<br>
+                            <strong>المحدبة:</strong> تفرق الضوء
+                        </div>
+                    </div>
+                    
+                    <div class="grid-card">
+                        <div class="grid-title">العدسات</div>
+                        <div class="grid-text">
+                            <strong>المحدبة:</strong> تجمع الضوء<br>
+                            <strong>المقعرة:</strong> تفرق الضوء<br>
+                            تستخدم في النظارات والمجاهر
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('grid-card')) {
+                    card.style.transform = 'translateY(-10px) scale(1.05)';
+                } else if (card.classList.contains('map-branch')) {
+                    card.style.transform = 'scale(1.05)';
+                } else {
+                    card.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

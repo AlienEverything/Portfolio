@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإنجازات الشخصية - حسن حمزة الشخص</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .hero {
+            padding: 120px 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2cbf, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content {
+            color: #d0d0d0;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        .achievement-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 20px;
+            margin: 2rem auto;
+            display: block;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .achievement-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.4);
+            border-color: #00d4ff;
+        }
+
+        .image-caption {
+            text-align: center;
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-right: 4px solid #00d4ff;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateX(-10px);
+        }
+
+        .achievement-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-description {
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logoText">الإنجازات الشخصية</div>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn" id="homeBtn">العودة للرئيسية</a>
+                <button class="nav-btn" onclick="toggleLanguage()" id="langBtn">English</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title" id="mainTitle">الإنجازات والمشاركات الشخصية</h1>
+    </div>
+
+    <div class="section">
+        <div class="content-card">
+            <h3 class="card-title" id="ibdaTitle">المشاركة في معرض إبداع 2026 بالمدينة المنورة</h3>
+            <div class="card-content">
+                <p id="ibdaDesc1">شاركت في معرض إبداع 2026 بالمدينة المنورة، وهو من أبرز المعارض الوطنية التي تهتم بالابتكار والإبداع العلمي. كانت هذه فرصة رائعة لعرض الأفكار المبتكرة والتفاعل مع المهتمين بالمجال العلمي والتقني.</p>
+                <p id="ibdaDesc2">حالياً في انتظار نتائج التأهل للمرحلة القادمة، وأتطلع بكل حماس لاستكمال هذه الرحلة الملهمة والمشاركة في المراحل المتقدمة من المعرض.</p>
+                
+                <img src="https://alieneverything.github.io/Hassan_Portfolio/ibda3_with_principle.jpg" alt="مع زملائي ومدير المدرسة في معرض إبداع" class="achievement-image">
+                <p class="image-caption" id="imgCaption1">صورة جماعية من معرض إبداع مع زملائي ومدير المدرسة (أنا الممسك بيد المدير اليمنى)</p>
+                
+                <img src="https://alieneverything.github.io/Hassan_Portfolio/ibda3_cert.jpg" alt="شهادة المشاركة في معرض إبداع" class="achievement-image">
+                <p class="image-caption" id="imgCaption2">شهادة المشاركة في معرض إبداع بالمدينة المنورة</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title" id="achieveTitle">الإنجازات الأكاديمية والمهارات التقنية</h3>
+            <ul class="achievement-list">
+                <li class="achievement-item">
+                    <div class="achievement-title" id="stepTitle">اختبار STEP - نسبة 84%</div>
+                    <div class="achievement-description" id="stepDesc">حصلت على درجة 84% في اختبار STEP بتاريخ 16 أبريل 2024. على الرغم من أن هذا الاختبار كان قبل فترة طويلة، إلا أنني أعمل بجد على تطوير مهاراتي في اللغة الإنجليزية بشكل مستمر. أخطط لإعادة الاختبار قريباً لتحسين نتيجتي والوصول لمستوى أعلى يعكس التطور الذي حققته منذ ذلك الحين.</div>
+                </li>
+
+                <li class="achievement-item">
+                    <div class="achievement-title" id="mawhibaTitle">اختبار موهبة القياسي - 1581 نقطة</div>
+                    <div class="achievement-description" id="mawhibaDesc">حصلت على درجة 1581 في المستوى الثاني من اختبار موهبة القياسي قبل حوالي سنتين. هذه النتيجة تعكس القدرات التحليلية والعقلية في ذلك الوقت. أتطلع للمشاركة في المستوى الثالث من الاختبار قريباً بإذن الله، وأعمل على تطوير مهاراتي لتحقيق نتيجة أفضل تعكس التطور والنمو الذي حصل خلال هذه الفترة.</div>
+                </li>
+
+                <li class="achievement-item">
+                    <div class="achievement-title" id="pythonTitle">لغة البايثون Python</div>
+                    <div class="achievement-description" id="pythonDesc">أكملت دورة شاملة في لغة البايثون العام الماضي استمرت لمدة 12 ساعة كاملة. تعلمت خلالها أساسيات البرمجة والمفاهيم المتقدمة، وأصبحت قادراً على كتابة برامج فعالة لحل المشكلات وتطوير تطبيقات مفيدة.</div>
+                </li>
+
+                <li class="achievement-item">
+                    <div class="achievement-title" id="linuxTitle">لينكس وباش Linux & Bash</div>
+                    <div class="achievement-description" id="linuxDesc">تعلمت نظام لينكس ولغة باش قبل عامين تقريباً من خلال عدة دورات تعليمية متخصصة. اكتسبت مهارات إدارة الأنظمة والعمل مع سطر الأوامر، وهذا أعطاني فهماً عميقاً لكيفية عمل أنظمة التشغيل.</div>
+                </li>
+
+                <li class="achievement-item">
+                    <div class="achievement-title" id="automationTitle">البرمجة الذاتية و n8n</div>
+                    <div class="achievement-description" id="automationDesc">درست البرمجة الذاتية وأداة n8n العام الماضي من خلال دورات متعددة. تعلمت كيفية ربط الخدمات المختلفة وأتمتة المهام المتكررة، مما ساعدني في تحسين الإنتاجية والكفاءة في العمل.</div>
+                </li>
+
+                <li class="achievement-item">
+                    <div class="achievement-title" id="roboticsTitle">الروبوتات (Raspberry Pi و Arduino)</div>
+                    <div class="achievement-description" id="roboticsDesc">قبل عام تقريباً، تعلمت العمل مع أجهزة Raspberry Pi و Arduino من خلال دورات متخصصة. اكتسبت خبرة في برمجة الأجهزة الذكية وبناء مشاريع إلكترونية، وهذا فتح لي آفاقاً واسعة في عالم إنترنت الأشياء.</div>
+                </li>
+
+                <li class="achievement-item">
+                    <div class="achievement-title" id="printingTitle">الطباعة ثلاثية الأبعاد 3D Printing</div>
+                    <div class="achievement-description" id="printingDesc">قبل ثلاث سنوات، اشتريت طابعة ثلاثية الأبعاد وبدأت رحلتي في هذا المجال المثير. أخذت عدة دورات تعليمية وتعلمت التصميم والطباعة، وأصبحت قادراً على تحويل الأفكار إلى منتجات ملموسة.</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let isArabic = true;
+
+        const translations = {
+            ar: {
+                logoText: 'الإنجازات الشخصية',
+                homeBtn: 'العودة للرئيسية',
+                langBtn: 'English',
+                mainTitle: 'الإنجازات والمشاركات الشخصية',
+                ibdaTitle: 'المشاركة في معرض إبداع 2026 بالمدينة المنورة',
+                ibdaDesc1: 'شاركت في معرض إبداع 2026 بالمدينة المنورة، وهو من أبرز المعارض الوطنية التي تهتم بالابتكار والإبداع العلمي. كانت هذه فرصة رائعة لعرض الأفكار المبتكرة والتفاعل مع المهتمين بالمجال العلمي والتقني.',
+                ibdaDesc2: 'حالياً في انتظار نتائج التأهل للمرحلة القادمة، وأتطلع بكل حماس لاستكمال هذه الرحلة الملهمة والمشاركة في المراحل المتقدمة من المعرض.',
+                imgCaption1: 'صورة جماعية من معرض إبداع مع زملائي ومدير المدرسة (أنا الممسك بيد المدير اليمنى)',
+                imgCaption2: 'شهادة المشاركة في معرض إبداع بالمدينة المنورة',
+                achieveTitle: 'الإنجازات الأكاديمية والمهارات التقنية',
+                stepTitle: 'اختبار STEP - نسبة 84%',
+                stepDesc: 'حصلت على درجة 84% في اختبار STEP بتاريخ 16 أبريل 2024. على الرغم من أن هذا الاختبار كان قبل فترة طويلة، إلا أنني أعمل بجد على تطوير مهاراتي في اللغة الإنجليزية بشكل مستمر. أخطط لإعادة الاختبار قريباً لتحسين نتيجتي والوصول لمستوى أعلى يعكس التطور الذي حققته منذ ذلك الحين.',
+                mawhibaTitle: 'اختبار موهبة القياسي - 1581 نقطة',
+                mawhibaDesc: 'حصلت على درجة 1581 في المستوى الثاني من اختبار موهبة القياسي قبل حوالي سنتين. هذه النتيجة تعكس القدرات التحليلية والعقلية في ذلك الوقت. أتطلع للمشاركة في المستوى الثالث من الاختبار قريباً بإذن الله، وأعمل على تطوير مهاراتي لتحقيق نتيجة أفضل تعكس التطور والنمو الذي حصل خلال هذه الفترة.',
+                pythonTitle: 'لغة البايثون Python',
+                pythonDesc: 'أكملت دورة شاملة في لغة البايثون العام الماضي استمرت لمدة 12 ساعة كاملة. تعلمت خلالها أساسيات البرمجة والمفاهيم المتقدمة، وأصبحت قادراً على كتابة برامج فعالة لحل المشكلات وتطوير تطبيقات مفيدة.',
+                linuxTitle: 'لينكس وباش Linux & Bash',
+                linuxDesc: 'تعلمت نظام لينكس ولغة باش قبل عامين تقريباً من خلال عدة دورات تعليمية متخصصة. اكتسبت مهارات إدارة الأنظمة والعمل مع سطر الأوامر، وهذا أعطاني فهماً عميقاً لكيفية عمل أنظمة التشغيل.',
+                automationTitle: 'البرمجة الذاتية و n8n',
+                automationDesc: 'درست البرمجة الذاتية وأداة n8n العام الماضي من خلال دورات متعددة. تعلمت كيفية ربط الخدمات المختلفة وأتمتة المهام المتكررة، مما ساعدني في تحسين الإنتاجية والكفاءة في العمل.',
+                roboticsTitle: 'الروبوتات (Raspberry Pi و Arduino)',
+                roboticsDesc: 'قبل عام تقريباً، تعلمت العمل مع أجهزة Raspberry Pi و Arduino من خلال دورات متخصصة. اكتسبت خبرة في برمجة الأجهزة الذكية وبناء مشاريع إلكترونية، وهذا فتح لي آفاقاً واسعة في عالم إنترنت الأشياء.',
+                printingTitle: 'الطباعة ثلاثية الأبعاد 3D Printing',
+                printingDesc: 'قبل ثلاث سنوات، اشتريت طابعة ثلاثية الأبعاد وبدأت رحلتي في هذا المجال المثير. أخذت عدة دورات تعليمية وتعلمت التصميم والطباعة، وأصبحت قادراً على تحويل الأفكار إلى منتجات ملموسة.'
+            },
+            en: {
+                logoText: 'Personal Achievements',
+                homeBtn: 'Back to Home',
+                langBtn: 'العربية',
+                mainTitle: 'Personal Achievements and Participations',
+                ibdaTitle: 'Participation in Ibda\'a Exhibition 2026 in Madinah',
+                ibdaDesc1: 'I participated in the Ibda\'a Exhibition 2026 in Madinah, one of the most prominent national exhibitions focused on innovation and scientific creativity. This was an amazing opportunity to showcase innovative ideas and interact with those interested in the scientific and technical field.',
+                ibdaDesc2: 'Currently awaiting the results for qualification to the next stage, and I look forward with great enthusiasm to continuing this inspiring journey and participating in the advanced stages of the exhibition.',
+                imgCaption1: 'Group photo from Ibda\'a Exhibition with my colleagues and the school principal (I am the one holding the principal\'s right hand)',
+                imgCaption2: 'Certificate of participation in Ibda\'a Exhibition in Madinah',
+                achieveTitle: 'Academic Achievements and Technical Skills',
+                stepTitle: 'STEP Exam - 84%',
+                stepDesc: 'I scored 84% on the STEP exam on April 16, 2024. Although this exam was taken a while ago, I have been working hard to continuously develop my English language skills. I plan to retake the exam soon to improve my score and reach a higher level that reflects the progress I have made since then.',
+                mawhibaTitle: 'Mawhiba Measurement Test - 1581 Points',
+                mawhibaDesc: 'I scored 1581 in the second level of the Mawhiba measurement test about two years ago. This result reflects my analytical and mental abilities at that time. I look forward to participating in the third level of the test soon, God willing, and I am working on developing my skills to achieve a better result that reflects the development and growth that has occurred during this period.',
+                pythonTitle: 'Python Programming Language',
+                pythonDesc: 'I completed a comprehensive Python course last year that lasted 12 full hours. I learned the basics of programming and advanced concepts, and became able to write effective programs to solve problems and develop useful applications.',
+                linuxTitle: 'Linux & Bash',
+                linuxDesc: 'I learned Linux operating system and Bash language about two years ago through several specialized courses. I gained system administration skills and command line work, which gave me a deep understanding of how operating systems work.',
+                automationTitle: 'Automation and n8n',
+                automationDesc: 'I studied automation and the n8n tool last year through multiple courses. I learned how to connect different services and automate repetitive tasks, which helped me improve productivity and work efficiency.',
+                roboticsTitle: 'Robotics (Raspberry Pi and Arduino)',
+                roboticsDesc: 'About a year ago, I learned to work with Raspberry Pi and Arduino devices through specialized courses. I gained experience in programming smart devices and building electronic projects, which opened up wide horizons for me in the world of IoT.',
+                printingTitle: '3D Printing',
+                printingDesc: 'Three years ago, I bought a 3D printer and started my journey in this exciting field. I took several educational courses and learned design and printing, and became able to turn ideas into tangible products.'
+            }
+        };
+
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const lang = isArabic ? 'ar' : 'en';
+            const html = document.documentElement;
+            
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+            
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.achievement-item').forEach(item => {
+                if (isArabic) {
+                    item.style.borderRight = '4px solid #00d4ff';
+                    item.style.borderLeft = 'none';
+                } else {
+                    item.style.borderLeft = '4px solid #00d4ff';
+                    item.style.borderRight = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
