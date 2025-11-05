@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حسن حمزة الشخص - Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #d4af37;
+            --accent-light: #f4e5b8;
+            --text-light: #ffffff;
+            --text-dark: #0f0f0f;
+            --gradient-1: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            --gradient-2: linear-gradient(135deg, #d4af37 0%, #f4e5b8 100%);
+            --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.3);
+            --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background: var(--primary);
+            color: var(--text-light);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        body.en {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-2);
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 3rem;
+            border-bottom: 2px solid var(--accent);
+            box-shadow: var(--shadow-dark);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 3rem;
+            background: rgba(26, 26, 46, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .mawhiba-logo {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+            transition: all 0.4s ease;
+        }
+
+        .mawhiba-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.6));
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-btn {
+            background: var(--gradient-2);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            color: var(--text-dark);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: inherit;
+            box-shadow: var(--shadow-gold);
+            opacity: 0;
+            animation: fadeInRight 0.8s ease 0.2s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .nav-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-1);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('https://alieneverything.github.io/Portfolio/mwhibah_logo1.png') center/400px no-repeat;
+            opacity: 0.03;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            letter-spacing: 2px;
+        }
+
+        .hero-grade {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.8;
+            color: var(--accent-light);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            color: var(--accent);
+            display: block;
+        }
+
+        .intro-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+            position: relative;
+        }
+
+        .intro-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-gold);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .intro-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .intro-text {
+            font-size: 1.3rem;
+            line-height: 2.2;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            background: var(--secondary);
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--primary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .content-card {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 25px;
+            padding: 3rem;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .content-card:hover::before {
+            left: 100%;
+        }
+
+        .content-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--accent);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .card-content {
+            color: var(--text-light);
+            line-height: 2.2;
+            font-size: 1.15rem;
+        }
+
+        .achievement-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 20px;
+            margin: 2.5rem auto;
+            display: block;
+            border: 3px solid var(--accent);
+            box-shadow: var(--shadow-gold);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .achievement-image.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .achievement-image:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+        }
+
+        .image-caption {
+            text-align: center;
+            color: var(--accent-light);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-right: 5px solid var(--accent);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateX(50px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body[dir="ltr"] .achievement-item {
+            border-right: none;
+            border-left: 5px solid var(--accent);
+            transform: translateX(-50px);
+        }
+
+        .achievement-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.1);
+            transition: width 0.4s ease;
+        }
+
+        .achievement-item:hover::before {
+            width: 100%;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(-10px);
+            border-right-color: var(--accent-light);
+            box-shadow: var(--shadow-gold);
+        }
+
+        body[dir="ltr"] .achievement-item:hover {
+            transform: translateX(10px);
+        }
+
+        .achievement-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-description {
+            color: var(--text-light);
+            line-height: 2;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer {
+            background: var(--gradient-1);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem;
+            border-top: 2px solid var(--accent);
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .logo-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .mawhiba-logo {
+                height: 50px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+            }
+
+            .achievement-item {
+                padding: 2rem;
+            }
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="https://alieneverything.github.io/Portfolio/mwhibah_logo1.png" alt="Mawhiba Logo" class="mawhiba-logo">
+                <div class="logo" id="logoText">ملف الإنجازات</div>
+            </div>
+            <button class="nav-btn" onclick="toggleLanguage()" id="langBtn">English</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <img src="https://alieneverything.github.io/Portfolio/mwhibah_logo1.png" alt="Mawhiba Logo" class="hero-logo">
+            <h1 class="hero-title" id="heroName">حسن حمزة احمد الشخص</h1>
+            <p class="hero-subtitle" id="heroSubtitle">Hassan Hamzah Ahmed Alshakhs</p>
+            <p class="hero-grade" id="heroGrade">السنة الأولى ثانوي</p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </div>
+
+    <div class="intro-section">
+        <div class="intro-card">
+            <p class="intro-text" id="introText">
+                اسمي حسن حمزة أحمد الشخص. أنا في السنة الأولى من المرحلة الثانوية. أحب الأفكار الجديدة والآلات والإبداع والبرمجيات والذكاء الاصطناعي، وكيفية عمل العالم. أدرس بجد لأتعلم المزيد، ولأتحسن في كل نوع من العلوم والتكنولوجيا. أريد أن أخبركم بما قمت به وحققته حتى الآن.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title" id="participationTitle">المشاركات والفعاليات</h2>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title" id="ibdaTitle">المشاركة في معرض إبداع 2026 بالمدينة المنورة</h3>
+            <div class="card-content">
+                <p id="ibdaDesc1">شاركت في معرض إبداع 2026 بالمدينة المنورة، وهو من أبرز المعارض الوطنية التي تهتم بالابتكار والإبداع العلمي. كانت هذه فرصة رائعة لعرض الأفكار المبتكرة والتفاعل مع المهتمين بالمجال العلمي والتقني.</p>
+                <p id="ibdaDesc2">حالياً في انتظار نتائج التأهل للمرحلة القادمة، وأتطلع بكل حماس لاستكمال هذه الرحلة الملهمة والمشاركة في المراحل المتقدمة من المعرض.</p>
+                
+                <img src="https://alieneverything.github.io/Hassan_Portfolio/ibda3_with_principle.jpg" alt="مع زملائي ومدير المدرسة في معرض إبداع" class="achievement-image">
+                <p class="image-caption" id="imgCaption1">صورة جماعية من معرض إبداع مع زملائي ومدير المدرسة (أنا الممسك بيد المدير اليمنى)</p>
+                
+                <img src="https://alieneverything.github.io/Hassan_Portfolio/ibda3_cert.jpg" alt="شهادة المشاركة في معرض إبداع" class="achievement-image">
+                <p class="image-caption" id="imgCaption2">شهادة المشاركة في معرض إبداع بالمدينة المنورة</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title" id="achieveTitle">الإنجازات الأكاديمية والمهارات التقنية</h2>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title" id="stepTitle">اختبار STEP - نسبة 84%</h3>
+            <div class="card-content">
+                <p id="stepDesc">حصلت على درجة 84% في اختبار STEP بتاريخ 16 أبريل 2024. على الرغم من أن هذا الاختبار كان قبل فترة طويلة، إلا أنني أعمل بجد على تطوير مهاراتي في اللغة الإنجليزية بشكل مستمر. أخطط لإجراء اختبار IELTS قريباً بإذن الله والحصول على درجة ممتازة تعكس التطور الذي حققته منذ ذلك الحين.</p>
+                
+                <img src="https://alieneverything.github.io/Portfolio/bro.png" alt="نتيجة اختبار STEP" class="achievement-image">
+                <p class="image-caption" id="stepImgCaption">نتيجة اختبار STEP - 84%</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title" id="mawhibaTitle">اختبار موهبة القياسي - 1581 نقطة</h3>
+            <div class="card-content">
+                <p id="mawhibaDesc">حصلت على درجة 1581 في المستوى الثاني من اختبار موهبة القياسي قبل حوالي سنتين. هذه النتيجة تعكس القدرات التحليلية والعقلية في ذلك الوقت. أتطلع للمشاركة في المستوى الثالث من الاختبار قريباً بإذن الله، وأعمل على تطوير مهاراتي لتحقيق نتيجة أفضل تعكس التطور والنمو الذي حصل خلال هذه الفترة.</p>
+                
+                <img src="https://alieneverything.github.io/Portfolio/mqiyas.jpg" alt="نتيجة اختبار موهبة القياسي" class="achievement-image">
+                <p class="image-caption" id="mawhibaImgCaption">نتيجة اختبار موهبة القياسي - 1581 نقطة</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3 class="card-title" id="mawhoobTitle">موهوب أحياء</h3>
+            <div class="card-content">
+                <p id="mawhoobDesc">أخذت اختبار موهوب في مادة الأحياء، والذي يعكس اهتمامي وشغفي بالعلوم الحيوية. هذا الإنجاز يمثل خطوة مهمة في مسيرتي العلمية ويفتح لي آفاقاً واسعة في مجال البيولوجيا والعلوم الطبيعية.</p>
+                
+                <img src="https://alieneverything.github.io/Portfolio/mawhoob.jpg" alt="شهادة موهوب أحياء" class="achievement-image">
+                <p class="image-caption" id="mawhoobImgCaption">شهادة اختبار موهوب في مادة الأحياء</p>
+            </div>
+        </div>
+
+        <ul class="achievement-list">
+            <li class="achievement-item">
+                <div class="achievement-title" id="pythonTitle">لغة البايثون Python</div>
+                <div class="achievement-description" id="pythonDesc">أكملت دورة شاملة في لغة البايثون العام الماضي استمرت لمدة 12 ساعة كاملة. تعلمت خلالها أساسيات البرمجة والمفاهيم المتقدمة، وأصبحت قادراً على كتابة برامج فعالة لحل المشكلات وتطوير تطبيقات مفيدة.</div>
+            </li>
+
+            <li class="achievement-item">
+                <div class="achievement-title" id="linuxTitle">لينكس وباش Linux & Bash</div>
+                <div class="achievement-description" id="linuxDesc">تعلمت نظام لينكس ولغة باش قبل عامين تقريباً من خلال عدة دورات تعليمية متخصصة. اكتسبت مهارات إدارة الأنظمة والعمل مع سطر الأوامر، وهذا أعطاني فهماً عميقاً لكيفية عمل أنظمة التشغيل.</div>
+            </li>
+
+            <li class="achievement-item">
+                <div class="achievement-title" id="automationTitle">البرمجة الذاتية و n8n</div>
+                <div class="achievement-description" id="automationDesc">درست البرمجة الذاتية وأداة n8n العام الماضي من خلال دورات متعددة. تعلمت كيفية ربط الخدمات المختلفة وأتمتة المهام المتكررة، مما ساعدني في تحسين الإنتاجية والكفاءة في العمل.</div>
+            </li>
+
+            <li class="achievement-item">
+                <div class="achievement-title" id="roboticsTitle">الروبوتات (Raspberry Pi و Arduino)</div>
+                <div class="achievement-description" id="roboticsDesc">قبل عام تقريباً، تعلمت العمل مع أجهزة Raspberry Pi و Arduino من خلال دورات متخصصة. اكتسبت خبرة في برمجة الأجهزة الذكية وبناء مشاريع إلكترونية، وهذا فتح لي آفاقاً واسعة في عالم إنترنت الأشياء.</div>
+            </li>
+
+            <li class="achievement-item">
+                <div class="achievement-title" id="printingTitle">الطباعة ثلاثية الأبعاد 3D Printing</div>
+                <div class="achievement-description" id="printingDesc">قبل ثلاث سنوات، اشتريت طابعة ثلاثية الأبعاد وبدأت رحلتي في هذا المجال المثير. أخذت عدة دورات تعليمية وتعلمت التصميم والطباعة، وأصبحت قادراً على تحويل الأفكار إلى منتجات ملموسة.</div>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <p id="footerText">© 2025 حسن حمزة احمد الشخص - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        let isArabic = true;
+
+        const translations = {
+            ar: {
+                logoText: 'ملف الإنجازات',
+                langBtn: 'English',
+                heroName: 'حسن حمزة احمد الشخص',
+                heroSubtitle: 'Hassan Hamzah Ahmed Alshakhs',
+                heroGrade: 'السنة الأولى ثانوي',
+                introText: 'اسمي حسن حمزة أحمد الشخص. أنا في السنة الأولى من المرحلة الثانوية. أحب الأفكار الجديدة والآلات والإبداع والبرمجيات والذكاء الاصطناعي، وكيفية عمل العالم. أدرس بجد لأتعلم المزيد، ولأتحسن في كل نوع من العلوم والتكنولوجيا. أريد أن أخبركم بما قمت به وحققته حتى الآن.',
+                participationTitle: 'المشاركات والفعاليات',
+                ibdaTitle: 'المشاركة في معرض إبداع 2026 بالمدينة المنورة',
+                ibdaDesc1: 'شاركت في معرض إبداع 2026 بالمدينة المنورة، وهو من أبرز المعارض الوطنية التي تهتم بالابتكار والإبداع العلمي. كانت هذه فرصة رائعة لعرض الأفكار المبتكرة والتفاعل مع المهتمين بالمجال العلمي والتقني.',
+                ibdaDesc2: 'حالياً في انتظار نتائج التأهل للمرحلة القادمة، وأتطلع بكل حماس لاستكمال هذه الرحلة الملهمة والمشاركة في المراحل المتقدمة من المعرض.',
+                imgCaption1: 'صورة جماعية من معرض إبداع مع زملائي ومدير المدرسة (أنا الممسك بيد المدير اليمنى)',
+                imgCaption2: 'شهادة المشاركة في معرض إبداع بالمدينة المنورة',
+                achieveTitle: 'الإنجازات الأكاديمية والمهارات التقنية',
+                stepTitle: 'اختبار STEP - نسبة 84%',
+                stepDesc: 'حصلت على درجة 84% في اختبار STEP بتاريخ 16 أبريل 2024. على الرغم من أن هذا الاختبار كان قبل فترة طويلة، إلا أنني أعمل بجد على تطوير مهاراتي في اللغة الإنجليزية بشكل مستمر. أخطط لإجراء اختبار IELTS قريباً بإذن الله والحصول على درجة ممتازة تعكس التطور الذي حققته منذ ذلك الحين.',
+                stepImgCaption: 'نتيجة اختبار STEP - 84%',
+                mawhibaTitle: 'اختبار موهبة القياسي - 1581 نقطة',
+                mawhibaDesc: 'حصلت على درجة 1581 في المستوى الثاني من اختبار موهبة القياسي قبل حوالي سنتين. هذه النتيجة تعكس القدرات التحليلية والعقلية في ذلك الوقت. أتطلع للمشاركة في المستوى الثالث من الاختبار قريباً بإذن الله، وأعمل على تطوير مهاراتي لتحقيق نتيجة أفضل تعكس التطور والنمو الذي حصل خلال هذه الفترة.',
+                mawhibaImgCaption: 'نتيجة اختبار موهبة القياسي - 1581 نقطة',
+                mawhoobTitle: 'موهوب أحياء',
+                mawhoobDesc: 'أخذت اختبار موهوب في مادة الأحياء، والذي يعكس اهتمامي وشغفي بالعلوم الحيوية. هذا الإنجاز يمثل خطوة مهمة في مسيرتي العلمية ويفتح لي آفاقاً واسعة في مجال البيولوجيا والعلوم الطبيعية.',
+                mawhoobImgCaption: 'شهادة اختبار موهوب في مادة الأحياء',
+                pythonTitle: 'لغة البايثون Python',
+                pythonDesc: 'أكملت دورة شاملة في لغة البايثون العام الماضي استمرت لمدة 12 ساعة كاملة. تعلمت خلالها أساسيات البرمجة والمفاهيم المتقدمة، وأصبحت قادراً على كتابة برامج فعالة لحل المشكلات وتطوير تطبيقات مفيدة.',
+                linuxTitle: 'لينكس وباش Linux & Bash',
+                linuxDesc: 'تعلمت نظام لينكس ولغة باش قبل عامين تقريباً من خلال عدة دورات تعليمية متخصصة. اكتسبت مهارات إدارة الأنظمة والعمل مع سطر الأوامر، وهذا أعطاني فهماً عميقاً لكيفية عمل أنظمة التشغيل.',
+                automationTitle: 'البرمجة الذاتية و n8n',
+                automationDesc: 'درست البرمجة الذاتية وأداة n8n العام الماضي من خلال دورات متعددة. تعلمت كيفية ربط الخدمات المختلفة وأتمتة المهام المتكررة، مما ساعدني في تحسين الإنتاجية والكفاءة في العمل.',
+                roboticsTitle: 'الروبوتات (Raspberry Pi و Arduino)',
+                roboticsDesc: 'قبل عام تقريباً، تعلمت العمل مع أجهزة Raspberry Pi و Arduino من خلال دورات متخصصة. اكتسبت خبرة في برمجة الأجهزة الذكية وبناء مشاريع إلكترونية، وهذا فتح لي آفاقاً واسعة في عالم إنترنت الأشياء.',
+                printingTitle: 'الطباعة ثلاثية الأبعاد 3D Printing',
+                printingDesc: 'قبل ثلاث سنوات، اشتريت طابعة ثلاثية الأبعاد وبدأت رحلتي في هذا المجال المثير. أخذت عدة دورات تعليمية وتعلمت التصميم والطباعة، وأصبحت قادراً على تحويل الأفكار إلى منتجات ملموسة.',
+                footerText: '© 2025 حسن حمزة احمد الشخص - جميع الحقوق محفوظة'
+            },
+            en: {
+                logoText: 'Achievement Portfolio',
+                langBtn: 'العربية',
+                heroName: 'Hassan Hamzah Ahmed Alshakhs',
+                heroSubtitle: 'حسن حمزة احمد الشخص',
+                heroGrade: 'First Year Secondary School',
+                introText: 'My name is Hassan Hamzah Ahmed Al-Shakhs. I am in my first year of secondary school. I love new ideas, machines, creativity, software and AI, and how the world works. I study hard to learn more, and to get better at every kind of science and technology. I want to tell you what I have done and achieved until now.',
+                participationTitle: 'Participations and Events',
+                ibdaTitle: 'Participation in Ibda\'a Exhibition 2026 in Madinah',
+                ibdaDesc1: 'I participated in the Ibda\'a Exhibition 2026 in Madinah, one of the most prominent national exhibitions focused on innovation and scientific creativity. This was an amazing opportunity to showcase innovative ideas and interact with those interested in the scientific and technical field.',
+                ibdaDesc2: 'Currently awaiting the results for qualification to the next stage, and I look forward with great enthusiasm to continuing this inspiring journey and participating in the advanced stages of the exhibition.',
+                imgCaption1: 'Group photo from Ibda\'a Exhibition with my colleagues and the school principal (I am the one holding the principal\'s right hand)',
+                imgCaption2: 'Certificate of participation in Ibda\'a Exhibition in Madinah',
+                achieveTitle: 'Academic Achievements and Technical Skills',
+                stepTitle: 'STEP Exam - 84%',
+                stepDesc: 'I scored 84% on the STEP exam on April 16, 2024. Although this exam was taken a while ago, I have been working hard to continuously develop my English language skills. I plan to take the IELTS exam soon, God willing, and achieve an excellent score that reflects the progress I have made since then.',
+                stepImgCaption: 'STEP Exam Result - 84%',
+                mawhibaTitle: 'Mawhiba Measurement Test - 1581 Points',
+                mawhibaDesc: 'I scored 1581 in the second level of the Mawhiba measurement test about two years ago. This result reflects my analytical and mental abilities at that time. I look forward to participating in the third level of the test soon, God willing, and I am working on developing my skills to achieve a better result that reflects the development and growth that has occurred during this period.',
+                mawhibaImgCaption: 'Mawhiba Measurement Test Result - 1581 Points',
+                mawhoobTitle: 'Mawhoob Biology',
+                mawhoobDesc: 'I took the Mawhoob test in Biology, which reflects my interest and passion for life sciences. This achievement represents an important step in my scientific journey and opens wide horizons for me in the field of biology and natural sciences.',
+                mawhoobImgCaption: 'Certificate of Mawhoob test in Biology',
+                pythonTitle: 'Python Programming Language',
+                pythonDesc: 'I completed a comprehensive Python course last year that lasted 12 full hours. I learned the basics of programming and advanced concepts, and became able to write effective programs to solve problems and develop useful applications.',
+                linuxTitle: 'Linux & Bash',
+                linuxDesc: 'I learned Linux operating system and Bash language about two years ago through several specialized courses. I gained system administration skills and command line work, which gave me a deep understanding of how operating systems work.',
+                automationTitle: 'Automation and n8n',
+                automationDesc: 'I studied automation and the n8n tool last year through multiple courses. I learned how to connect different services and automate repetitive tasks, which helped me improve productivity and work efficiency.',
+                roboticsTitle: 'Robotics (Raspberry Pi and Arduino)',
+                roboticsDesc: 'About a year ago, I learned to work with Raspberry Pi and Arduino devices through specialized courses. I gained experience in programming smart devices and building electronic projects, which opened up wide horizons for me in the world of IoT.',
+                printingTitle: '3D Printing',
+                printingDesc: 'Three years ago, I bought a 3D printer and started my journey in this exciting field. I took several educational courses and learned design and printing, and became able to turn ideas into tangible products.',
+                footerText: '© 2025 Hassan Hamzah Ahmed Alshakhs - All Rights Reserved'
+            }
+        };
+
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const lang = isArabic ? 'ar' : 'en';
+            const dir = isArabic ? 'rtl' : 'ltr';
+            
+            document.documentElement.lang = lang;
+            document.body.dir = dir;
+            document.body.className = isArabic ? '' : 'en';
+            
+            // Update all text content
+            Object.keys(translations[lang]).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.intro-card, .section-header, .content-card, .achievement-item, .achievement-image');
+            animatedElements.forEach(el => observer.observe(el));
+
+            // Navbar scroll effect
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        });
+    </script>
+</body>
+</html>
