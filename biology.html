@@ -1,663 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأحياء - حسن حمزة الشخص</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a4a2e 50%, #16213e 100%);
-            color: #ffffff;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a2e;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #27b009, #63e91e);
-            border-radius: 10px;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #27b009, #63e91e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-btn {
-            background: linear-gradient(45deg, #27b009, #63e91e);
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 20px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .nav-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(39, 176, 9, 0.4);
-        }
-
-        .hero {
-            padding: 120px 2rem 4rem;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #27b009, #63e91e, #90ff60);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #27b009, #63e91e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            transition: all 0.4s ease;
-        }
-
-        .content-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(39, 176, 9, 0.3);
-            border-color: #27b009;
-        }
-
-        .card-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #63e91e;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .card-content {
-            color: #d0d0d0;
-            line-height: 2;
-            font-size: 1.1rem;
-        }
-
-        .card-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .card-content ul {
-            padding-right: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-content li {
-            margin-bottom: 1rem;
-        }
-
-        .concept-map {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .map-center {
-            background: linear-gradient(45deg, #27b009, #63e91e);
-            padding: 1.5rem;
-            border-radius: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .map-branches {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .map-branch {
-            background: rgba(39, 176, 9, 0.1);
-            border: 2px solid #27b009;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .map-branch:hover {
-            transform: scale(1.05);
-            background: rgba(39, 176, 9, 0.2);
-        }
-
-        .branch-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #63e91e;
-            margin-bottom: 0.5rem;
-        }
-
-        .branch-items {
-            font-size: 1rem;
-            color: #d0d0d0;
-            line-height: 1.8;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .grid-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .grid-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(39, 176, 9, 0.3);
-            border-color: #27b009;
-        }
-
-        .grid-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .grid-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #63e91e;
-            margin-bottom: 1rem;
-        }
-
-        .grid-text {
-            color: #d0d0d0;
-            line-height: 1.8;
-        }
-
-        .formula-box {
-            background: rgba(39, 176, 9, 0.1);
-            border: 2px solid #27b009;
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: center;
-            font-size: 1.3rem;
-            color: #63e91e;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">الأحياء</div>
-            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
-        </div>
-    </nav>
-
-    <div class="hero">
-        <h1 class="hero-title">مادة الأحياء</h1>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">التعريف بعلم الأحياء</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">ما هو علم الأحياء؟</h3>
-            <div class="card-content">
-                <p>علم الأحياء هو العلم الذي يدرس الكائنات الحية وعملياتها الحيوية، من أصغر الكائنات الدقيقة إلى أكبر الحيوانات والنباتات. يشمل دراسة التركيب، الوظيفة، النمو، التطور، التوزيع، والتصنيف للكائنات الحية.</p>
-                
-                <p><strong>أهمية علم الأحياء:</strong></p>
-                <ul>
-                    <li>فهم كيفية عمل أجسامنا والحفاظ على صحتنا</li>
-                    <li>تطوير الأدوية والعلاجات الطبية الحديثة</li>
-                    <li>حماية البيئة والتنوع البيولوجي</li>
-                    <li>تحسين الزراعة وإنتاج الغذاء</li>
-                    <li>فهم العلاقات بين الكائنات الحية والبيئة</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">فروع علم الأحياء</h3>
-            <div class="card-content">
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-icon">🔬</div>
-                        <div class="grid-title">علم الخلية</div>
-                        <div class="grid-text">دراسة بنية ووظائف الخلايا، الوحدة الأساسية للحياة</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🧬</div>
-                        <div class="grid-title">علم الوراثة</div>
-                        <div class="grid-text">دراسة الجينات والصفات الوراثية وانتقالها عبر الأجيال</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🌿</div>
-                        <div class="grid-title">علم البيئة</div>
-                        <div class="grid-text">دراسة العلاقات بين الكائنات الحية وبيئتها</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🦴</div>
-                        <div class="grid-title">علم التشريح</div>
-                        <div class="grid-text">دراسة بنية وتركيب أجسام الكائنات الحية</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">الخلية - وحدة الحياة</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">تركيب الخلية</h3>
-            <div class="card-content">
-                <p>الخلية هي أصغر وحدة حية يمكنها القيام بجميع الوظائف الحيوية. تتكون جميع الكائنات الحية من خلية واحدة أو أكثر.</p>
-
-                <div class="concept-map">
-                    <div class="map-center">مكونات الخلية</div>
-                    <div class="map-branches">
-                        <div class="map-branch">
-                            <div class="branch-title">النواة</div>
-                            <div class="branch-items">
-                                مركز التحكم في الخلية<br>
-                                تحتوي على الحمض النووي<br>
-                                تنظم جميع أنشطة الخلية
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">السيتوبلازم</div>
-                            <div class="branch-items">
-                                مادة هلامية<br>
-                                يحتوي على العضيات<br>
-                                تحدث فيه التفاعلات
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الغشاء الخلوي</div>
-                            <div class="branch-items">
-                                يحيط بالخلية<br>
-                                ينظم دخول وخروج المواد<br>
-                                شبه منفذ
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الميتوكوندريا</div>
-                            <div class="branch-items">
-                                مصنع الطاقة<br>
-                                تنتج ATP<br>
-                                التنفس الخلوي
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الريبوسومات</div>
-                            <div class="branch-items">
-                                تصنع البروتينات<br>
-                                تترجم الشفرة الوراثية<br>
-                                توجد في السيتوبلازم
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">البلاستيدات الخضراء</div>
-                            <div class="branch-items">
-                                في الخلايا النباتية<br>
-                                عملية البناء الضوئي<br>
-                                تحتوي على الكلوروفيل
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">أنواع الخلايا</h3>
-            <div class="card-content">
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-title">الخلايا بدائية النواة</div>
-                        <div class="grid-text">
-                            <strong>الخصائص:</strong><br>
-                            - لا تحتوي على نواة محددة<br>
-                            - المادة الوراثية حرة في السيتوبلازم<br>
-                            - أبسط تركيباً<br>
-                            - مثال: البكتيريا
-                        </div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-title">الخلايا حقيقية النواة</div>
-                        <div class="grid-text">
-                            <strong>الخصائص:</strong><br>
-                            - تحتوي على نواة محددة<br>
-                            - عضيات متخصصة<br>
-                            - أكثر تعقيداً<br>
-                            - مثال: خلايا النباتات والحيوانات
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">البناء الضوئي</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">عملية البناء الضوئي</h3>
-            <div class="card-content">
-                <p>البناء الضوئي هو العملية التي تحول فيها النباتات الطاقة الضوئية إلى طاقة كيميائية مخزنة في الجلوكوز.</p>
-
-                <p><strong>المعادلة الكيميائية:</strong></p>
-                <div class="formula-box">
-                    6CO₂ + 6H₂O + طاقة ضوئية → C₆H₁₂O₆ + 6O₂
-                </div>
-
-                <p><strong>متطلبات البناء الضوئي:</strong></p>
-                <ul>
-                    <li><strong>ثاني أكسيد الكربون:</strong> من الهواء عبر الثغور</li>
-                    <li><strong>الماء:</strong> من التربة عبر الجذور</li>
-                    <li><strong>الضوء:</strong> طاقة من الشمس</li>
-                    <li><strong>الكلوروفيل:</strong> الصبغة الخضراء التي تمتص الضوء</li>
-                </ul>
-
-                <p><strong>النواتج:</strong></p>
-                <ul>
-                    <li><strong>الجلوكوز:</strong> سكر يستخدم كغذاء وطاقة</li>
-                    <li><strong>الأكسجين:</strong> ينطلق للجو ويستخدمه الكائنات الحية</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">الحمض النووي والوراثة</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">تركيب الحمض النووي DNA</h3>
-            <div class="card-content">
-                <p>الحمض النووي الريبوزي منقوص الأكسجين (DNA) هو جزيء يحمل المعلومات الوراثية في جميع الكائنات الحية. يتكون من سلسلتين ملتفتين على شكل لولب مزدوج.</p>
-
-                <p><strong>مكونات DNA:</strong></p>
-                <ul>
-                    <li><strong>السكر:</strong> ديوكسي ريبوز</li>
-                    <li><strong>الفوسفات:</strong> مجموعة فوسفات</li>
-                    <li><strong>القواعد النيتروجينية:</strong> أدينين (A)، ثايمين (T)، جوانين (G)، سيتوزين (C)</li>
-                    <li><strong>قاعدة التكامل:</strong> A مع T، G مع C</li>
-                </ul>
-
-                <p><strong>الجينات والكروموسومات:</strong></p>
-                <ul>
-                    <li><strong>الجين:</strong> قطعة من DNA تحمل معلومات لصفة معينة</li>
-                    <li><strong>الكروموسوم:</strong> خيوط DNA ملفوفة، يحتوي الإنسان على 46 كروموسوم</li>
-                    <li><strong>الجينوم:</strong> مجموع المادة الوراثية في الكائن الحي</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">الوراثة المندلية</h3>
-            <div class="card-content">
-                <p>وضع العالم جريجور مندل أسس علم الوراثة من خلال تجاربه على نبات البازلاء.</p>
-
-                <div class="concept-map">
-                    <div class="map-center">قوانين مندل</div>
-                    <div class="map-branches">
-                        <div class="map-branch">
-                            <div class="branch-title">قانون السيادة</div>
-                            <div class="branch-items">
-                                الصفة السائدة تظهر<br>
-                                الصفة المتنحية تختفي<br>
-                                في الجيل الأول
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">قانون الانعزال</div>
-                            <div class="branch-items">
-                                انفصال الجينات<br>
-                                عند تكوين الأمشاج<br>
-                                نسبة 3:1
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">قانون التوزيع الحر</div>
-                            <div class="branch-items">
-                                توزيع مستقل للصفات<br>
-                                لا تؤثر على بعضها<br>
-                                صفات متعددة
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">أجهزة جسم الإنسان</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">الأجهزة الحيوية</h3>
-            <div class="card-content">
-                <div class="concept-map">
-                    <div class="map-center">أجهزة الجسم</div>
-                    <div class="map-branches">
-                        <div class="map-branch">
-                            <div class="branch-title">الجهاز الهضمي</div>
-                            <div class="branch-items">
-                                هضم الطعام<br>
-                                امتصاص المواد الغذائية<br>
-                                التخلص من الفضلات
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الجهاز التنفسي</div>
-                            <div class="branch-items">
-                                تبادل الغازات<br>
-                                الحصول على الأكسجين<br>
-                                طرد ثاني أكسيد الكربون
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الجهاز الدوري</div>
-                            <div class="branch-items">
-                                نقل الدم<br>
-                                توزيع الأكسجين والغذاء<br>
-                                القلب والأوعية الدموية
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الجهاز العصبي</div>
-                            <div class="branch-items">
-                                التحكم والتنسيق<br>
-                                الإحساس والحركة<br>
-                                الدماغ والأعصاب
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الجهاز الهيكلي</div>
-                            <div class="branch-items">
-                                الدعم والحماية<br>
-                                الحركة<br>
-                                العظام والمفاصل
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الجهاز الإخراجي</div>
-                            <div class="branch-items">
-                                التخلص من الفضلات<br>
-                                تنظيم الماء والأملاح<br>
-                                الكليتان والمثانة
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">البيئة والنظم البيئية</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">النظام البيئي</h3>
-            <div class="card-content">
-                <p>النظام البيئي هو مجتمع من الكائنات الحية والبيئة غير الحية التي تتفاعل معاً في منطقة معينة.</p>
-
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-icon">🌱</div>
-                        <div class="grid-title">المنتجات</div>
-                        <div class="grid-text">النباتات الخضراء، تصنع غذاءها بالبناء الضوئي، أساس السلسلة الغذائية</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🦁</div>
-                        <div class="grid-title">المستهلكات</div>
-                        <div class="grid-text">الحيوانات، تتغذى على كائنات أخرى، آكلات عشب أو لحوم أو كلاهما</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🍄</div>
-                        <div class="grid-title">المحللات</div>
-                        <div class="grid-text">البكتيريا والفطريات، تحلل المواد العضوية، تعيد المواد للتربة</div>
-                    </div>
-                </div>
-
-                <p><strong>السلاسل والشبكات الغذائية:</strong></p>
-                <ul>
-                    <li><strong>السلسلة الغذائية:</strong> انتقال الطاقة من كائن لآخر في خط واحد</li>
-                    <li><strong>الشبكة الغذائية:</strong> تداخل عدة سلاسل غذائية معاً</li>
-                    <li><strong>الهرم الغذائي:</strong> تمثيل لكميات الطاقة في كل مستوى</li>
-                    <li>تقل الطاقة كلما انتقلنا من مستوى لآخر</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">الدورات البيوجيوكيميائية</h3>
-            <div class="card-content">
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-title">دورة الماء</div>
-                        <div class="grid-text">التبخر، التكثف، الهطول، الجريان، التسرب</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-title">دورة الكربون</div>
-                        <div class="grid-text">البناء الضوئي، التنفس، الاحتراق، التحلل</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-title">دورة النيتروجين</div>
-                        <div class="grid-text">التثبيت، النترجة، الامتصاص، نزع النيتروجين</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.querySelectorAll('.content-card, .grid-card, .map-branch').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                if (card.classList.contains('grid-card')) {
-                    card.style.transform = 'translateY(-10px) scale(1.05)';
-                } else if (card.classList.contains('map-branch')) {
-                    card.style.transform = 'scale(1.05)';
-                } else {
-                    card.style.transform = 'translateY(-10px)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    </script>
