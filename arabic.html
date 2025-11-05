@@ -1,821 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اللغة العربية - حسن حمزة الشخص</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #1a1a2e;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
-            border-radius: 10px;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-btn {
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
-            border: none;
-            padding: 0.6rem 1.5rem;
-            border-radius: 20px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .nav-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
-        }
-
-        .hero {
-            padding: 120px 2rem 4rem;
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf, #ff006e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            transition: all 0.4s ease;
-        }
-
-        .content-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
-            border-color: #00d4ff;
-        }
-
-        .card-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .card-content {
-            color: #d0d0d0;
-            line-height: 2;
-            font-size: 1.1rem;
-        }
-
-        .card-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .card-content ul {
-            padding-right: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-content li {
-            margin-bottom: 1rem;
-        }
-
-        .concept-map {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .map-center {
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
-            padding: 1.5rem;
-            border-radius: 20px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .map-branches {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .map-branch {
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid #00d4ff;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .map-branch:hover {
-            transform: scale(1.05);
-            background: rgba(0, 212, 255, 0.2);
-        }
-
-        .branch-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 0.5rem;
-        }
-
-        .branch-items {
-            font-size: 1rem;
-            color: #d0d0d0;
-            line-height: 1.8;
-        }
-
-        .timeline-container {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .timeline-item:hover {
-            transform: translateX(-15px);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
-            border-color: #00d4ff;
-        }
-
-        .timeline-period {
-            display: inline-block;
-            background: linear-gradient(45deg, #00d4ff, #7b2cbf);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-description {
-            color: #d0d0d0;
-            line-height: 2;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .grid-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .grid-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
-            border-color: #00d4ff;
-        }
-
-        .grid-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .grid-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 1rem;
-        }
-
-        .grid-text {
-            color: #d0d0d0;
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .map-branches {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">اللغة العربية</div>
-            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
-        </div>
-    </nav>
-
-    <div class="hero">
-        <h1 class="hero-title">مادة اللغة العربية</h1>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">التعريف باللغة العربية</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">ما هي اللغة العربية؟</h3>
-            <div class="card-content">
-                <p>اللغة العربية هي إحدى أقدم اللغات السامية وأكثرها انتشاراً في العالم. تُعرف بأنها لغة القرآن الكريم، وهي اللغة الرسمية لأكثر من 22 دولة عربية، ويتحدث بها أكثر من 400 مليون شخص حول العالم.</p>
-                
-                <p><strong>مكانة اللغة العربية:</strong></p>
-                <ul>
-                    <li>لغة القرآن الكريم والعبادة للمسلمين في جميع أنحاء العالم</li>
-                    <li>إحدى اللغات الرسمية الست في الأمم المتحدة</li>
-                    <li>لغة ذات تاريخ أدبي وثقافي عريق يمتد لأكثر من 1500 عام</li>
-                    <li>تحتوي على ثروة لغوية هائلة من المفردات والتراكيب</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">خصائص اللغة العربية</h3>
-            <div class="card-content">
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-icon">📚</div>
-                        <div class="grid-title">الثراء اللغوي</div>
-                        <div class="grid-text">تحتوي على أكثر من 12 مليون كلمة، وهي من أغنى اللغات في العالم من حيث المفردات</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">📖</div>
-                        <div class="grid-title">البلاغة والفصاحة</div>
-                        <div class="grid-text">تتميز بأساليب بلاغية متنوعة كالاستعارة والكناية والمجاز</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🎯</div>
-                        <div class="grid-title">الإعراب</div>
-                        <div class="grid-text">نظام نحوي دقيق يحدد وظيفة كل كلمة في الجملة</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">✨</div>
-                        <div class="grid-title">المرونة</div>
-                        <div class="grid-text">قدرة على الاشتقاق وتوليد كلمات جديدة من جذر واحد</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">تاريخ اللغة العربية</h2>
-        
-        <div class="timeline-container">
-            <div class="timeline-item">
-                <span class="timeline-period">العصر الجاهلي (قبل الإسلام)</span>
-                <h3 class="timeline-title">نشأة اللغة وازدهار الشعر</h3>
-                <div class="timeline-description">
-                    <p>ظهرت اللغة العربية الفصحى في شبه الجزيرة العربية، وازدهر الشعر الجاهلي كأعلى أشكال التعبير الأدبي. اشتهرت المعلقات السبع كأروع ما نُظم من شعر في تلك الحقبة. كانت الأسواق الأدبية مثل سوق عكاظ منصات لتبادل الشعر والخطابة.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-period">صدر الإسلام (القرن 7م)</span>
-                <h3 class="timeline-title">نزول القرآن الكريم</h3>
-                <div class="timeline-description">
-                    <p>مع نزول القرآن الكريم، ارتقت اللغة العربية إلى مستويات جديدة من البلاغة والفصاحة. أصبحت اللغة محفوظة بحفظ القرآن، وانتشرت مع انتشار الإسلام إلى مختلف أنحاء العالم. ظهرت الحاجة لوضع قواعد النحو والصرف للحفاظ على سلامة قراءة القرآن.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-period">العصر الأموي والعباسي</span>
-                <h3 class="timeline-title">العصر الذهبي للأدب العربي</h3>
-                <div class="timeline-description">
-                    <p>شهدت هذه الفترة ازدهاراً عظيماً في جميع مجالات الأدب والعلوم. ظهر علماء النحو الكبار مثل سيبويه والخليل بن أحمد، وازدهر فن الشعر مع شعراء عظام مثل أبي نواس والمتنبي وأبي تمام. كما ظهرت حركة الترجمة الكبرى في بيت الحكمة ببغداد.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <span class="timeline-period">العصر الحديث</span>
-                <h3 class="timeline-title">التجديد والنهضة</h3>
-                <div class="timeline-description">
-                    <p>مع عصر النهضة العربية، تجددت اللغة العربية وتطورت لتواكب العلوم الحديثة. ظهرت المجامع اللغوية للحفاظ على اللغة وتطويرها. في عصرنا الحالي، تواجه اللغة العربية تحديات العولمة، لكنها تستمر كلغة حية متجددة بفضل جهود المؤسسات التعليمية والثقافية.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">خرائط المفاهيم</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">خريطة مفاهيم: أقسام الكلام في اللغة العربية</h3>
-            <div class="concept-map">
-                <div class="map-center">أقسام الكلام</div>
-                <div class="map-branches">
-                    <div class="map-branch">
-                        <div class="branch-title">الاسم</div>
-                        <div class="branch-items">
-                            ما دل على معنى في نفسه<br>
-                            غير مقترن بزمن<br>
-                            مثل: محمد، كتاب، مدرسة
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الفعل</div>
-                        <div class="branch-items">
-                            ما دل على حدث<br>
-                            مقترن بزمن<br>
-                            ماضي، مضارع، أمر
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الحرف</div>
-                        <div class="branch-items">
-                            ما دل على معنى في غيره<br>
-                            لا يظهر معناه إلا مع غيره<br>
-                            مثل: في، على، إلى
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">خريطة مفاهيم: علوم اللغة العربية</h3>
-            <div class="concept-map">
-                <div class="map-center">علوم اللغة العربية</div>
-                <div class="map-branches">
-                    <div class="map-branch">
-                        <div class="branch-title">النحو</div>
-                        <div class="branch-items">
-                            دراسة الإعراب<br>
-                            أحوال أواخر الكلمات<br>
-                            الجملة الاسمية والفعلية
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الصرف</div>
-                        <div class="branch-items">
-                            دراسة بنية الكلمة<br>
-                            الاشتقاق والميزان الصرفي<br>
-                            التصغير والنسب
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">البلاغة</div>
-                        <div class="branch-items">
-                            المعاني والبيان والبديع<br>
-                            التشبيه والاستعارة<br>
-                            الكناية والمجاز
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">العروض</div>
-                        <div class="branch-items">
-                            علم أوزان الشعر<br>
-                            البحور الشعرية<br>
-                            التفعيلات والقوافي
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الإملاء</div>
-                        <div class="branch-items">
-                            قواعد الكتابة الصحيحة<br>
-                            الهمزات والألف اللينة<br>
-                            علامات الترقيم
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الأدب</div>
-                        <div class="branch-items">
-                            الشعر والنثر<br>
-                            المقالة والخطابة<br>
-                            القصة والمسرحية
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">خريطة مفاهيم: الجملة في اللغة العربية</h3>
-            <div class="concept-map">
-                <div class="map-center">أنواع الجمل</div>
-                <div class="map-branches">
-                    <div class="map-branch">
-                        <div class="branch-title">الجملة الاسمية</div>
-                        <div class="branch-items">
-                            تبدأ باسم<br>
-                            مكونة من مبتدأ وخبر<br>
-                            مثل: العلم نور<br>
-                            الطالب مجتهد
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الجملة الفعلية</div>
-                        <div class="branch-items">
-                            تبدأ بفعل<br>
-                            مكونة من فعل وفاعل<br>
-                            مثل: قرأ الطالب<br>
-                            يشرق الفجر
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">خريطة مفاهيم: أنواع الأفعال</h3>
-            <div class="concept-map">
-                <div class="map-center">الفعل وأنواعه</div>
-                <div class="map-branches">
-                    <div class="map-branch">
-                        <div class="branch-title">الفعل الماضي</div>
-                        <div class="branch-items">
-                            يدل على حدث وقع في الزمن الماضي<br>
-                            مبني دائماً<br>
-                            مثل: كتبَ، درسَ، فهمَ
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">الفعل المضارع</div>
-                        <div class="branch-items">
-                            يدل على حدث يحدث الآن<br>
-                            معرب أو مبني<br>
-                            مثل: يكتبُ، يدرسُ، يفهمُ
-                        </div>
-                    </div>
-                    <div class="map-branch">
-                        <div class="branch-title">فعل الأمر</div>
-                        <div class="branch-items">
-                            يدل على طلب حدوث الفعل<br>
-                            مبني دائماً<br>
-                            مثل: اكتبْ، ادرسْ، افهمْ
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">أساسيات القواعد النحوية</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">علامات الإعراب</h3>
-            <div class="card-content">
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-icon">⬆️</div>
-                        <div class="grid-title">الرفع</div>
-                        <div class="grid-text">
-                            <strong>العلامات:</strong> الضمة (الأصلية)، الواو (جمع المذكر السالم)، الألف (المثنى)، ثبوت النون (الأفعال الخمسة)
-                        </div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">⬇️</div>
-                        <div class="grid-title">النصب</div>
-                        <div class="grid-text">
-                            <strong>العلامات:</strong> الفتحة (الأصلية)، الياء (المثنى وجمع المذكر السالم)، الكسرة (جمع المؤنث السالم)، حذف النون (الأفعال الخمسة)
-                        </div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">➡️</div>
-                        <div class="grid-title">الجر</div>
-                        <div class="grid-text">
-                            <strong>العلامات:</strong> الكسرة (الأصلية)، الياء (المثنى وجمع المذكر السالم)، الفتحة (الممنوع من الصرف)
-                        </div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">⏸️</div>
-                        <div class="grid-title">الجزم</div>
-                        <div class="grid-text">
-                            <strong>العلامات:</strong> السكون (الأصلية)، حذف حرف العلة، حذف النون (الأفعال الخمسة)
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">المبتدأ والخبر</h3>
-            <div class="card-content">
-                <p><strong>المبتدأ:</strong> هو الاسم المرفوع الذي تبدأ به الجملة الاسمية، ويكون محكوماً عليه.</p>
-                <p><strong>الخبر:</strong> هو الاسم المرفوع الذي يُخبر عن المبتدأ ويتمم معنى الجملة.</p>
-                
-                <p><strong>أمثلة:</strong></p>
-                <ul>
-                    <li>العلمُ نافعٌ (العلم: مبتدأ مرفوع، نافع: خبر مرفوع)</li>
-                    <li>الطالبُ مجتهدٌ (الطالب: مبتدأ مرفوع، مجتهد: خبر مرفوع)</li>
-                    <li>السماءُ صافيةٌ (السماء: مبتدأ مرفوع، صافية: خبر مرفوع)</li>
-                </ul>
-                
-                <p><strong>أنواع الخبر:</strong></p>
-                <ul>
-                    <li><strong>خبر مفرد:</strong> الكتابُ جديدٌ</li>
-                    <li><strong>خبر جملة:</strong> الطالبُ يدرسُ دروسَه</li>
-                    <li><strong>خبر شبه جملة:</strong> الكتابُ على الطاولةِ</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">الفعل والفاعل</h3>
-            <div class="card-content">
-                <p><strong>الفعل:</strong> كلمة تدل على حدث مقترن بزمن.</p>
-                <p><strong>الفاعل:</strong> اسم مرفوع يدل على من قام بالفعل.</p>
-                
-                <p><strong>أمثلة:</strong></p>
-                <ul>
-                    <li>كتبَ الطالبُ الدرسَ (كتب: فعل ماضٍ، الطالب: فاعل مرفوع)</li>
-                    <li>يقرأُ المعلمُ القصةَ (يقرأ: فعل مضارع، المعلم: فاعل مرفوع)</li>
-                    <li>شرحَ الأستاذُ الدرسَ (شرح: فعل ماضٍ، الأستاذ: فاعل مرفوع)</li>
-                </ul>
-                
-                <p><strong>أحكام الفاعل:</strong></p>
-                <ul>
-                    <li>الفاعل دائماً مرفوع</li>
-                    <li>يأتي بعد الفعل مباشرة غالباً</li>
-                    <li>لا يجوز حذف الفاعل من الجملة</li>
-                    <li>قد يكون الفاعل اسماً ظاهراً أو ضميراً</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">المفعول به</h3>
-            <div class="card-content">
-                <p><strong>المفعول به:</strong> اسم منصوب يدل على من وقع عليه فعل الفاعل.</p>
-                
-                <p><strong>أمثلة:</strong></p>
-                <ul>
-                    <li>قرأَ الطالبُ الكتابَ (الكتاب: مفعول به منصوب)</li>
-                    <li>كتبَ المعلمُ الدرسَ (الدرس: مفعول به منصوب)</li>
-                    <li>حفظَ الطالبُ القصيدةَ (القصيدة: مفعول به منصوب)</li>
-                </ul>
-                
-                <p><strong>علامات نصب المفعول به:</strong></p>
-                <ul>
-                    <li>الفتحة الظاهرة في الاسم المفرد</li>
-                    <li>الياء في المثنى وجمع المذكر السالم</li>
-                    <li>الكسرة في جمع المؤنث السالم</li>
-                    <li>الفتحة الظاهرة في جمع التكسير</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2 class="section-title">الأدب العربي</h2>
-        
-        <div class="content-card">
-            <h3 class="card-title">أنواع الأدب العربي</h3>
-            <div class="card-content">
-                <div class="grid-container">
-                    <div class="grid-card">
-                        <div class="grid-icon">📜</div>
-                        <div class="grid-title">الشعر</div>
-                        <div class="grid-text">كلام موزون مقفى يعبر عن المشاعر والأحاسيس، ويتميز بالوزن والقافية والتصوير البلاغي</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">✍️</div>
-                        <div class="grid-title">النثر</div>
-                        <div class="grid-text">كلام غير موزون يشمل الخطابة والمقالة والقصة والرسالة، يتميز بالوضوح والمباشرة</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">📖</div>
-                        <div class="grid-title">القصة</div>
-                        <div class="grid-text">حكاية نثرية تصور حدثاً أو مجموعة أحداث، لها بداية ووسط ونهاية</div>
-                    </div>
-                    
-                    <div class="grid-card">
-                        <div class="grid-icon">🎭</div>
-                        <div class="grid-title">المسرحية</div>
-                        <div class="grid-text">عمل أدبي مكتوب للتمثيل، يحتوي على حوار وأحداث وشخصيات</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">أغراض الشعر العربي</h3>
-            <div class="card-content">
-                <div class="concept-map">
-                    <div class="map-center">أغراض الشعر</div>
-                    <div class="map-branches">
-                        <div class="map-branch">
-                            <div class="branch-title">المدح</div>
-                            <div class="branch-items">
-                                الثناء على الشخص<br>
-                                ذكر مناقبه وفضائله<br>
-                                مثل: شعر المتنبي
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الرثاء</div>
-                            <div class="branch-items">
-                                البكاء على الميت<br>
-                                ذكر صفاته الحسنة<br>
-                                مثل: رثاء الخنساء
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الغزل</div>
-                            <div class="branch-items">
-                                وصف الجمال والحب<br>
-                                التعبير عن العواطف<br>
-                                عفيف أو صريح
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الفخر</div>
-                            <div class="branch-items">
-                                الاعتزاز بالنفس والقبيلة<br>
-                                ذكر المناقب والشجاعة<br>
-                                إظهار القوة والكرم
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الوصف</div>
-                            <div class="branch-items">
-                                وصف الطبيعة والأماكن<br>
-                                تصوير المشاهد<br>
-                                استخدام الصور البلاغية
-                            </div>
-                        </div>
-                        <div class="map-branch">
-                            <div class="branch-title">الحكمة</div>
-                            <div class="branch-items">
-                                العظات والنصائح<br>
-                                خلاصة التجارب<br>
-                                الحكم والأمثال
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">عناصر القصة</h3>
-            <div class="card-content">
-                <ul>
-                    <li><strong>الشخصيات:</strong> الأفراد الذين تدور حولهم أحداث القصة (البطل، الشخصيات الثانوية)</li>
-                    <li><strong>الحدث:</strong> الأفعال والوقائع التي تجري في القصة وتتطور عبر الزمن</li>
-                    <li><strong>الزمان:</strong> الوقت الذي تجري فيه أحداث القصة</li>
-                    <li><strong>المكان:</strong> البيئة التي تدور فيها أحداث القصة</li>
-                    <li><strong>الحبكة:</strong> تسلسل الأحداث وترابطها منطقياً</li>
-                    <li><strong>العقدة:</strong> نقطة التأزم في القصة حيث تبلغ الأحداث ذروتها</li>
-                    <li><strong>الحل:</strong> نهاية الأحداث وحل المشكلة الرئيسية</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h3 class="card-title">الفنون البلاغية</h3>
-            <div class="card-content">
-                <p><strong>التشبيه:</strong> عقد مشاركة بين شيئين في صفة أو أكثر بأداة تشبيه. مثل: محمد كالأسد في الشجاعة.</p>
-                
-                <p><strong>الاستعارة:</strong> تشبيه حُذف أحد طرفيه. مثل: رأيت أسداً في المعركة (يقصد رجلاً شجاعاً).</p>
-                
-                <p><strong>الكناية:</strong> لفظ أطلق وأريد به لازم معناه. مثل: فلان كثير الرماد (كناية عن الكرم).</p>
-                
-                <p><strong>المجاز:</strong> استعمال اللفظ في غير ما وُضع له لعلاقة مع قرينة مانعة من إرادة المعنى الحقيقي.</p>
-                
-                <p><strong>الطباق:</strong> الجمع بين الكلمة وضدها في الجملة. مثل: يضحك الإنسان ويبكي.</p>
-                
-                <p><strong>الجناس:</strong> تشابه لفظين في النطق واختلافهما في المعنى. مثل: صليت المغرب في بلاد المغرب.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.querySelectorAll('.content-card, .grid-card, .timeline-item, .map-branch').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                if (card.classList.contains('timeline-item')) {
-                    card.style.transform = 'translateX(-15px) scale(1.02)';
-                } else if (card.classList.contains('grid-card')) {
-                    card.style.transform = 'translateY(-10px) scale(1.05)';
-                } else if (card.classList.contains('map-branch')) {
-                    card.style.transform = 'scale(1.05)';
-                } else {
-                    card.style.transform = 'translateY(-10px)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    </script>
-</body>
-</html>
-
-
-===== COPY THE ABOVE AND SAVE AS: arabic.html =====
